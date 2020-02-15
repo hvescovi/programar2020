@@ -12,12 +12,11 @@ public class TestarPessoa {
         p1.email = "jsilva@gmail.com";
         p1.telefone = "47 9 9922 4242";
         // criar outro objeto de forma mais compacta
-        Pessoa maria = new Pessoa("Maria Oliveira", 
-                "moliva@gmail.com", "47 9 9090 1201");
+        Pessoa maria = new Pessoa("Maria Oliveira", "moliva@gmail.com", 
+                "47 9 9090 1201");
         // exibir os dados das pessoas
-        System.out.println(p1.nome + ", " + p1.email
-                + ", " + p1.telefone);
-        System.out.println(maria.nome + ", " + maria.email
-                + ", " + maria.telefone);
+        System.out.println(p1.nome + ", " + p1.email + ", " + p1.telefone);
+        System.out.println(maria.nome + ", " + maria.email + ", " + 
+                maria.telefone);
     }
 }

@@ -10,10 +10,9 @@ public class Pessoa {
     public Pessoa(){};
     
     // construtor com parâmetros
-    public Pessoa(String n, String e, String t) {
+    public Pessoa(String n, String e, String telefone) {
         nome = n;
         email = e;
-        telefone = t;
-    }
-    
+        this.telefone = telefone;
+    }    
 }
