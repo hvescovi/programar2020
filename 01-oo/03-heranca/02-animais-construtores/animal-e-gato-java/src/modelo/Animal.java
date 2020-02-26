@@ -9,5 +9,3 @@ public class Animal {
         System.out.println("Animal comendo");
     }
 }
-
-
