@@ -1,0 +1,29 @@
+.linha {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.amarelo {
+    background-color: yellow;
+}
+
+.laranja {
+    background-color: orange;
+}
+
+.verde {
+    background-color: lightgreen;
+}
+
+.azul {
+    background-color: lightblue;
+}
