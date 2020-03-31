@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplos de javascript</title>
+</head>
+<body>
+    <!-- exemplo 1 -->
+    Não altere o nome que se encontra a seguir:
+    <input type="text" value="Maria Paula de Oliveira" onChange=
+        "alert('Você não deveria ter alterado o nome da senhora >-O');">
+
+    <!-- exemplo 2 -->
+    <hr>
+    <script language="Javascript">
+        var hoje = new Date()
+    </script>
+    <button onclick="alert('Data atual: ' +hoje)">Que dia é hoje?</button>
+
+    <!-- exemplo 3 -->
+    <hr>
+    <script language="javascript">
+        function muda_fundo() {
+            setTimeout("document.bgColor='lightpink'", 1500);
+            setTimeout("document.bgColor = 'pink'", 2000);
+            setTimeout("document.bgColor =  'deeppink'", 2500);
+            setTimeout("document.bgColor = 'red'", 3000);
+            setTimeout("document.bgColor = 'tomato'", 3500);
+            setTimeout("document.bgColor = 'darkred'", 4000);
+            setTimeout("document.bgColor='white'", 1000);
+        }
+    </script>
+    <button onclick="muda_fundo()">Mudar as cores de fundo da página</button>
+
+    <!-- exemplo 4 -->
+    <hr>
+    <script language="Javascript">
+        document.write("ESTE TEXTO APARECE NA PÁGIA VIA PROGRAMA JAVASCRIPT");
+    </script>
+
+    <!-- exemplo 5 -->
+    <hr>
+    <script language="Javascript">
+        function preenche() {
+            document.getElementById("caixa").innerHTML =
+                "<h1>Olá! Este é um novo texto!!!</h1>";
+        }
+    </script>
+    <button onclick="preenche()">
+        Clique aqui para mudar o texto que está com fundo amarelo!</button>
+    <div id="caixa" style="background-color: yellow">
+        Esta é uma DIV que contém um texto.</div>
+
+</body>
+</html>
