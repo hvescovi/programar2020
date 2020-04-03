@@ -27,12 +27,12 @@ public class Pessoa {
     @Override
     public String toString() {
         // dados básicos
-        String s = nome + ", mora em: " + endereco + ", (" + telefone + ")";
+        String s = id + ") " + nome + ", mora em: " + endereco + ", (" + telefone + ")";
         s += ", possui livros: ";
         // percorrer os livros que a pessoa possui
         for (Livro livro: this.livros) {
             // adiciona o livro (o método toString de Livro é acionado)
-            s += "\n -"+ livro;
+            s += "\n "+ livro;
         }
         return s;
     }    

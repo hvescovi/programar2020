@@ -25,6 +25,6 @@ public class Livro {
     // expressão do livro em string
     @Override
     public String toString() {
-        return titulo + ", " + autores + ", " + ano + ", " + editora;
+        return id + ") " + titulo + ", " + autores + ", " + ano + ", " + editora;
     }
 }

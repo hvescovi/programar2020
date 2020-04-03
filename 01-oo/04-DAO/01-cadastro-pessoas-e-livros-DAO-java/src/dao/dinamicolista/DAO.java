@@ -1,4 +1,4 @@
-package dao.dinamico;
+package dao.dinamicolista;
 
 import java.util.ArrayList;
 import modelo.Livro;
@@ -13,7 +13,22 @@ public class DAO {
 
     // manipulação de pessoas    
     public ArrayList<Pessoa> retornarPessoas() { return pessoas; }
-    public void adicionarPessoa(Pessoa p) { pessoas.add(p); }
+    public void adicionarPessoa(Pessoa nova) { 
+        // obter maior id cadastrado (supoe-se zero no início)
+        int maiorId = 0;
+        // percorrer as pessoas
+        for (Pessoa p : pessoas) { 
+            // se alguém tem Id maior que o maior conhecimento até agora
+            if (p.getId() > maiorId) { 
+                // então, este atual é o maior!
+                maiorId = p.getId(); 
+            }
+        }
+        // configura o id da nova pessoa (um NOVO id)
+        nova.setId(maiorId + 1);
+        // adiciona a pessoa!
+        pessoas.add(nova); 
+    }
     public int retornarQuantidadeDePessoas() { return pessoas.size(); }
     public void removerPessoa(Pessoa pe) { pessoas.remove(pe); }
     public Pessoa retornarPessoa(int i) { 
@@ -51,7 +66,22 @@ public class DAO {
     
     // manipulação de livros
     public ArrayList<Livro> retornarLivros() { return livros; }
-    public void adicionarLivro(Livro novo) { livros.add(novo); }
+    public void adicionarLivro(Livro novo) { 
+         // obter maior id cadastrado (supoe-se zero no início)
+        int maiorId = 0;
+        // percorrer os livros
+        for (Livro l : livros) { 
+            // se alguém tem Id maior que o maior conhecimento até agora
+            if (l.getId() > maiorId) { 
+                // então, este atual é o maior!
+                maiorId = l.getId(); 
+            }
+        }
+        // configura o id do novo livro (um NOVO id)
+        novo.setId(maiorId + 1);
+        // adiciona o livro!
+        livros.add(novo); 
+    }
     
     public ArrayList<Livro> retornarLivrosPorTextoDeBusca(String sequencia) {
         // criar lista de retorno

@@ -1,6 +1,6 @@
 package teste;
 
-import dao.dinamico.DAO;
+import dao.dinamicolista.DAO;
 import modelo.Livro;
 import modelo.Pessoa;
 
