@@ -22,8 +22,8 @@ public class Pessoa {
     public void setTelefone(String t) {telefone = t; }
     // construtor com parâmetros
     public Pessoa(String n, String e, String t) {
-        nome = n; endereco = e; telefone = t;}
-    
+        nome = n; endereco = e; telefone = t; 
+    }    
     @Override
     public String toString() {
         // dados básicos

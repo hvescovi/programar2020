@@ -32,20 +32,19 @@ public class DAO {
     public int retornarQuantidadeDePessoas() { return pessoas.size(); }
     public void removerPessoa(Pessoa pe) { pessoas.remove(pe); }
     public Pessoa retornarPessoa(int i) { 
-        // prepara o retorno padrão
+        // preparar o retorno padrão
         Pessoa retorno = new Pessoa("não encontrado", "n/a", "n/a");
         // percorrer as pessoas
         for (Pessoa pe : pessoas) {
             // se achou a pessoa (verifica pelo identificador)
             if (pessoas.get(i).getId() == pe.getId()) {
-                // retorna a pessoa e finaliza o método
+                // retornar a pessoa e finaliza o método
                 return pe;
             }
         }
-        // se não achou, retorna a pessoa com sinalização de erro
+        // se não achou, retornar a pessoa com sinalização de erro
         return retorno;
-    }
-    
+    } 
     public void atualizarPessoa(Pessoa p) {
         // sinalizar que será feita uma busca
         int ondeMudar = -1;
