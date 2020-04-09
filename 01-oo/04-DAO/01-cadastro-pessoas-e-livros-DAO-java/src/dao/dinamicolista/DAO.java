@@ -31,14 +31,14 @@ public class DAO {
     }
     public int retornarQuantidadeDePessoas() { return pessoas.size(); }
     public void removerPessoa(Pessoa pe) { pessoas.remove(pe); }
-    public Pessoa retornarPessoa(int i) { 
+    public Pessoa retornarPessoa(int id_procurado) { 
         // preparar o retorno padrão
         Pessoa retorno = new Pessoa("não encontrado", "n/a", "n/a");
         // percorrer as pessoas
         for (Pessoa pe : pessoas) {
             // se achou a pessoa (verifica pelo identificador)
-            if (pessoas.get(i).getId() == pe.getId()) {
-                // retornar a pessoa e finaliza o método
+            if (pe.getId() == id_procurado) {
+                // retornar a pessoa e finalizar o método
                 return pe;
             }
         }

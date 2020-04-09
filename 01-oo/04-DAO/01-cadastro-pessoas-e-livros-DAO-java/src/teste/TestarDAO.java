@@ -12,28 +12,28 @@ public class TestarDAO {
         DAO dao = new DAO();
         
         // popular o cadastro de livros
-        Livro l1 = new Livro("As regras do trabalho",
+        Livro li1 = new Livro("As regras do trabalho",
                 "Richard Templar", "2010", "Sextante");
-        Livro l2 = new Livro("Pense e enriqueça",
+        Livro li2 = new Livro("Pense e enriqueça",
                 "Napoleon Hill", "2014", "BestSeller");
-        Livro l3 = new Livro("A semente da vitória",
+        Livro li3 = new Livro("A semente da vitória",
                 "Nuno Cobra", "2001", "Senac SP");
-        dao.adicionarLivro(l1);
-        dao.adicionarLivro(l2);
-        dao.adicionarLivro(l3);
+        dao.adicionarLivro(li1);
+        dao.adicionarLivro(li2);
+        dao.adicionarLivro(li3);
         
         // popular o cadastro de pessoas (três pessoas)
         Pessoa p = new Pessoa("Joao", "Rua 3", "3521-1212");
-        p.registrarPosseLivro(l1);
+        p.registrarPosseLivro(li1);
         dao.adicionarPessoa(p);
         
         p = new Pessoa("Maria", "Beco Vinte", "4141-1313");
-        p.registrarPosseLivro(l2);
+        p.registrarPosseLivro(li2);
         dao.adicionarPessoa(p);
                 
         p = new Pessoa("Tiago", "Av. Redentor", "não tem telefone");
-        p.registrarPosseLivro(l1); // essa pessoa também tem um exemplar de l1
-        p.registrarPosseLivro(l3);
+        p.registrarPosseLivro(li1); // essa pessoa também tem um exemplar de l1
+        p.registrarPosseLivro(li3);
         dao.adicionarPessoa(p);
         
         // listar pessoas
@@ -55,7 +55,7 @@ public class TestarDAO {
         
         // excluir pessoa
         dao.removerPessoa(p);
-        System.out.print("* Pessoas no cadastro: ");
+        System.out.print("* Pessoas no cadastro após exclusão de uma pessoa: ");
         System.out.println(dao.retornarQuantidadeDePessoas());
         
         // quais são os livros no cadastro?
