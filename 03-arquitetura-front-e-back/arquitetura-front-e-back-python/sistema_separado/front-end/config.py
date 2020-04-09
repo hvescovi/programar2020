@@ -1,9 +1,8 @@
 # importações
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-import json
-import os
-import requests # para fazer requisição http
+import json # usar json.loads para transformar texto json em dicionário python
+import requests # para fazer requisição http; pip3 install requests
 
 # configurações
 app = Flask(__name__)

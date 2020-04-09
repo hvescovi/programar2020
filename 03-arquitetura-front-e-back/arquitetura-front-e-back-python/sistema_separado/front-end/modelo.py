@@ -22,10 +22,6 @@ class Pessoa(db.Model):
 
 # teste    
 if __name__ == "__main__":
-    # apagar o arquivo, se houver
-    if os.path.exists(arquivobd):
-        os.remove(arquivobd)
-
     # criar tabelas
     db.create_all()
 

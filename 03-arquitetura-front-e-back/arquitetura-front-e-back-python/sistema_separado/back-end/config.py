@@ -1,7 +1,7 @@
 # importações
 from flask import Flask, jsonify # preparar resposta HTTP no formato json
 from flask_sqlalchemy import SQLAlchemy
-import json # ajustar conteúdo para o formato json
+import json # ajusta conteúdo json (ex: troca aspas simples para duplas)
 import os
 
 # configurações
