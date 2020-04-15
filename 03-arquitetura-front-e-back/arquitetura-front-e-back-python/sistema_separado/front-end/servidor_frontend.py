@@ -9,14 +9,14 @@ def inicio():
 @app.route("/listar_pessoas")
 def listar_pessoas():
     # obter as pessoas do back-end
-    pessoas = requests.get('http://localhost:5000/listar_pessoas')
+    resultado_requisicao = requests.get('http://localhost:5000/listar_pessoas')
     # carregar os dados json para uma estrutura do python
-    json_pessoas = pessoas.json() #pessoas.json()
+    json_pessoas = resultado_requisicao.json() #pessoas.json()
     # inicializar uma lista do python
     pessoas_em_python = []
     # percorrer as pessoas em json
     for p in json_pessoas:
-        # decodificar o texto json para uma estrutura do python (dicionário)
+        # converter o texto json para uma estrutura do python (dicionário)
         dic_p = json.loads(p)
         # criar uma pessoa passando as informações do dicionário
         p = Pessoa(**dic_p)
