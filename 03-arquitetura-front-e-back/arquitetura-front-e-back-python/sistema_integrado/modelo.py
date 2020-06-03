@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     # teste da classe Pessoa
     p1 = Pessoa(nome = "João da Silva", email = "josilva@gmail.com", 
-        telefone = "47 99012 3232")
+        telefone = "47 99018 3232")
     p2 = Pessoa(nome = "Maria Oliveira", email = "molive@gmail.com", 
         telefone = "47 98822 2531")        
     
