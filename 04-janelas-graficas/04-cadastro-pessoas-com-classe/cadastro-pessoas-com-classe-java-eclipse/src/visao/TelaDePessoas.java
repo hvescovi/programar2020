@@ -219,7 +219,7 @@ public class TelaDePessoas extends JFrame {
 				}
 			}
 		});
-		btnExclui.setBounds(427, 35, 100, 20);
+		btnExclui.setBounds(427, 35, 100, 25);
 		contentPane.add(btnExclui);	
 	}
 }
