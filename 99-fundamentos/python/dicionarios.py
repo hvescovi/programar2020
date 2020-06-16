@@ -40,3 +40,16 @@ mostra_tudo(nome = "Paulo Tarso", cor_da_escova_de_dentes = "azul")
 
 print('* passando dic pra mostra_tudo, desempacotar dic com dois asteriscos')
 mostra_tudo(**pessoa) # CASO 2
+
+class Pessoa:
+    def __init__(self, nome, email, telefone):
+        self.nome = nome
+        self.email = email
+        self.telefone = telefone
+    def __str__(self):
+        return self.nome+", "+self.email+", "+self.telefone        
+
+p1 = Pessoa("Tiago", "tibah@gmail.com", "92231-1232")
+print(p1)
+p2 = Pessoa(**pessoa) # criando objeto com dados do dicionário
+print(p2)
