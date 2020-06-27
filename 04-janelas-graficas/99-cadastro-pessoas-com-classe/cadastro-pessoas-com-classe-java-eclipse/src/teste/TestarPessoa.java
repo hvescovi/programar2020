@@ -15,9 +15,7 @@ public class TestarPessoa {
         Pessoa maria = new Pessoa("Maria Oliveira", 
                 "moliva.com", "47 9 9090 1201");
         // exibir os dados das pessoas
-        System.out.println(p1.getNome() + ", " + p1.getEmail()
-                + ", " + p1.getTelefone());
-        System.out.println(maria.getNome() + ", " + maria.getEmail()
-                + ", " + maria.getTelefone());
+        System.out.println(p1);
+        System.out.println(maria);
     }
 }
