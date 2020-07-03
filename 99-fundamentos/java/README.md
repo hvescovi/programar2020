@@ -1,2 +1,2 @@
-# Programar 2020
-Repositório de arquivos utilizados no ensino de programação - IFC - 2020
+# Conceitos b�sicos em Java
+Projeto do Eclipse para demonstrar fundamentos e suplementos do Java

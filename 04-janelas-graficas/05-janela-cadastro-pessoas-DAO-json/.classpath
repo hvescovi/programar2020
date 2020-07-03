@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/friend/Documents/01-github/programar2020/04-janelas-graficas/05-janela-cadastro-pessoas-DAO-json/javax.json-1.1.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
