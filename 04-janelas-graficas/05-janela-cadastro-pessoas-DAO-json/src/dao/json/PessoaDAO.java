@@ -25,16 +25,14 @@ public class PessoaDAO {
 		JsonObject novo = Json.createObjectBuilder().add(
 				"nome", nova.getNome()).add("email", nova.getEmail())
 				.add("telefone", nova.getTelefone()).build();
-		// conteudo final que será escrito no arquivo,
-		// ao final do processamento
+		// conteudo final que sera escrito no arquivo, ao final do processamento
 		String gravar = "";
-		// o arquivo json já existe?
+		// o arquivo json ja existe?
 		File f = new File(caminho + nomeArquivo);
 		if (f.exists() && !f.isDirectory()) {
 			try {
 				// carregar o arquivo
-				String conteudo = new String(
-						Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
+				String conteudo = new String(Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
 				// converter a string para json (parsing)
 				JsonReader reader = Json.createReader(new StringReader(conteudo));
 				// carregar os dados no vetor
@@ -52,7 +50,7 @@ public class PessoaDAO {
 				}
 				// adicionar o novo elemento no novo vetor
 				jab.add(novo);
-				// preparar conteúdo a ser gravado
+				// preparar conteudo a ser gravado
 				gravar = jab.build().toString();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -60,10 +58,10 @@ public class PessoaDAO {
 		} else {
 			// construir vetor com apenas 1 elemento
 			JsonArray jab = Json.createArrayBuilder().add(novo).build();
-			// preparar conteúdo a ser gravado
+			// preparar conteudo a ser gravado
 			gravar = jab.toString();
 		}
-		// gravar o novo conteúdo no arquivo
+		// gravar o novo conteudo no arquivo
 		try {
 			Files.write(Paths.get(caminho + nomeArquivo), gravar.getBytes("utf-8"), StandardOpenOption.CREATE);
 		} catch (IOException e) {
@@ -102,12 +100,8 @@ public class PessoaDAO {
 		return pessoas;
 	}
 
-	public void removerPessoa(String nome) {
-		// exercicio para você fazer :-)
-	}
-
 	public void reiniciarDados() {
-		// o arquivo json já existe?
+		// o arquivo json ja existe?
 		Path p = Paths.get(caminho + nomeArquivo);
 		if (Files.exists(p)) {
 			// apaga o arquivo
@@ -117,5 +111,9 @@ public class PessoaDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void removerPessoa(String nome) {
+		// exercicio para voce fazer :-)
 	}
 }
