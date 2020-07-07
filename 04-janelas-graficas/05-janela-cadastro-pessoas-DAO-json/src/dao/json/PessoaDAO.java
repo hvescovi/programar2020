@@ -18,8 +18,17 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 public class PessoaDAO {
-	String caminho = "C:/temp/";
 	String nomeArquivo = "pessoas.json";
+	String caminho;
+	public PessoaDAO() { // construtor da classe
+		// obter o nome do sistema operacional
+		String nomeSo = System.getProperty("os.name").toLowerCase();
+		if (nomeSo.contains("win")) { // estamos executando no windows?
+			caminho = "C:/temp/";
+		} else { // estamos no linux (desconsiderando MacOS)
+			caminho = "/tmp/";
+		}
+	}
 	public void incluirPessoa(Pessoa nova) {
 		// modelar a pessoa em json
 		JsonObject novo = Json.createObjectBuilder().add(
@@ -68,28 +77,27 @@ public class PessoaDAO {
 			e.printStackTrace();
 		}
 	}
-
 	public ArrayList<Pessoa> retornarPessoas() {
 		// prepara a lista de retorno
 		ArrayList<Pessoa> pessoas = new ArrayList();
-		// o arquivo json j· existe?
+		// o arquivo json j√° existe?
 		File f = new File(caminho + nomeArquivo);
 		if (f.exists() && !f.isDirectory()) {
 			try {
 				// carregar o arquivo
-				String conteudo = new String(
-						Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
+				String conteudo = new String(Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
 				// converter a string para json (parsing)
 				JsonReader reader = Json.createReader(new StringReader(conteudo));
 				// carregar os dados no vetor
 				JsonArray ja = reader.readArray();
+				// fechar o leitor, o trabalho foi feito :-)
+				reader.close();
 				// percorre os dados lidos
 				for (int i = 0; i < ja.size(); i++) {
-					// obtÈm o objeto json
+					// obt√©m o objeto json
 					JsonObject tmp = (JsonObject) ja.get(i);
 					// cria o objeto Pessoa
-					Pessoa alguem = new Pessoa(tmp.getString("nome"), tmp.getString("email"),
-							tmp.getString("telefone"));
+					Pessoa alguem = new Pessoa(tmp.getString("nome"), tmp.getString("email"), tmp.getString("telefone"));
 					// adiciona a pessoa no array
 					pessoas.add(alguem);
 				}
@@ -99,7 +107,6 @@ public class PessoaDAO {
 		}
 		return pessoas;
 	}
-
 	public void reiniciarDados() {
 		// o arquivo json ja existe?
 		Path p = Paths.get(caminho + nomeArquivo);
@@ -111,8 +118,7 @@ public class PessoaDAO {
 				e.printStackTrace();
 			}
 		}
-	}
-	
+	}	
 	public void removerPessoa(String nome) {
 		// exercicio para voce fazer :-)
 	}

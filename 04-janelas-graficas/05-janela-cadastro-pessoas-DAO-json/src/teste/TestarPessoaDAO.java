@@ -12,7 +12,7 @@ public class TestarPessoaDAO {
 		// reiniciar o arquivo
 		pdao.reiniciarDados();
 		// incluir pessoas
-		pdao.incluirPessoa(new Pessoa("Tiago Tomé", "tito@gmail.com", "47 9 9231 1234"));
+		pdao.incluirPessoa(new Pessoa("Tiago TomÃ©", "tito@gmail.com", "47 9 9231 1234"));
 		pdao.incluirPessoa(new Pessoa("Suzana Vieira", "suvi@gmail.com", "47 9 9312 5324"));
 		pdao.incluirPessoa(new Pessoa("Paulo Horn", "pahorn@gmail.com", "47 9 8853 5342"));
 		System.out.println("3 pessoas criadas");
@@ -22,12 +22,12 @@ public class TestarPessoaDAO {
 		}
 		// remover pessoa
 		pdao.removerPessoa("Paulo Horn");
-		System.out.println("Pessoas após remoção: ");
+		System.out.println("Pessoas apÃ³s remoÃ§Ã£o: ");
 		for (Pessoa p : pdao.retornarPessoas()) {
 			System.out.println(p);
 		}
 		// limpando o teste
 		pdao.reiniciarDados();
-		System.out.println("Testes concluídos");
+		System.out.println("Testes concluÃ­dos");
 	}
 }
