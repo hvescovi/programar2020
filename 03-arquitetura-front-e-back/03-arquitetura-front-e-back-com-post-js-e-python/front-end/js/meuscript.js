@@ -1,7 +1,7 @@
 $(function() { // quando o documento estiver pronto/carregado
     
-    // código para mapear o click do link Listar
-    $(document).on("click", "#linkListarPessoas", function() {
+    // função para exibir pessoas na tabela
+    function exibir_pessoas() {
         $.ajax({
             url: 'http://localhost:5000/listar_pessoas',
             method: 'GET',
@@ -13,8 +13,7 @@ $(function() { // quando o documento estiver pronto/carregado
         });
         function listar (pessoas) {
             // tornar a tabela visível
-            mostrar_conteudo("tabelaPessoas");
-      
+            mostrar_conteudo("tabelaPessoas");      
             // percorrer a lista de pessoas retornadas; 
             for (var i in pessoas) { //i vale a posição no vetor
                 lin = '<tr>' + // elabora linha com os dados da pessoa
@@ -26,8 +25,13 @@ $(function() { // quando o documento estiver pronto/carregado
                 $('#corpoTabelaPessoas').append(lin);
             }
         }
-    });
+    }
 
+    // código para mapear o click do link Listar
+    $(document).on("click", "#linkListarPessoas", function() {
+        exibir_pessoas();
+    });
+    
     // função que mostra um conteúdo e esconde os outros
     function mostrar_conteudo(identificador) {
         // esconde todos os conteúdos
@@ -53,7 +57,6 @@ $(function() { // quando o documento estiver pronto/carregado
         tel = $("#campoTelefone").val();
         // preparar dados no formato json
         var dados = JSON.stringify({ nome: nome, email: email, telefone: tel })        
-        alert("==>"+dados);
         // fazer requisição para o back-end
         $.ajax({
             url: 'http://localhost:5000/incluir_pessoa',
@@ -84,4 +87,12 @@ $(function() { // quando o documento estiver pronto/carregado
         }
     });
 
+    // código a ser executado quando a janela de inclusão de pessoas for fechada
+    $('#modalIncluirPessoa').on('hide.bs.modal', function (e) {
+        // se a página de listagem não estiver invisível
+        if (! $("#tabelaPessoas").hasClass('invisible')) {
+            // atualizar a página de listagem
+            exibir_pessoas();
+        }
+    });
 });
