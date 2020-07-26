@@ -12,6 +12,8 @@ $(function() { // quando o documento estiver pronto/carregado
             }
         });
         function listar (pessoas) {
+            // esvaziar o corpo da tabela
+            $('#corpoTabelaPessoas').empty();
             // tornar a tabela visível
             mostrar_conteudo("tabelaPessoas");      
             // percorrer a lista de pessoas retornadas; 
@@ -27,11 +29,6 @@ $(function() { // quando o documento estiver pronto/carregado
         }
     }
 
-    // código para mapear o click do link Listar
-    $(document).on("click", "#linkListarPessoas", function() {
-        exibir_pessoas();
-    });
-    
     // função que mostra um conteúdo e esconde os outros
     function mostrar_conteudo(identificador) {
         // esconde todos os conteúdos
@@ -41,9 +38,11 @@ $(function() { // quando o documento estiver pronto/carregado
         $("#"+identificador).removeClass('invisible');      
     }
 
-    // a função abaixo é executada quando a página abre
-    mostrar_conteudo("conteudoInicial");
-
+    // código para mapear o click do link Listar
+    $(document).on("click", "#linkListarPessoas", function() {
+        exibir_pessoas();
+    });
+    
     // código para mapear click do link Inicio
     $(document).on("click", "#linkInicio", function() {
         mostrar_conteudo("conteudoInicial");
@@ -64,7 +63,6 @@ $(function() { // quando o documento estiver pronto/carregado
             dataType: 'json', // os dados são recebidos no formato json
             contentType: 'application/json', //content type
             data: dados, // estes são os dados enviados
-            //processData: false,            
             success: pessoaIncluida, // chama a função listar para processar o resultado
             error: erroAoIncluir
         });
@@ -95,4 +93,7 @@ $(function() { // quando o documento estiver pronto/carregado
             exibir_pessoas();
         }
     });
+
+    // a função abaixo é executada quando a página abre
+    mostrar_conteudo("conteudoInicial");
 });

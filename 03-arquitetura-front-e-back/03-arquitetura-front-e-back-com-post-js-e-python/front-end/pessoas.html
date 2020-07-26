@@ -15,23 +15,25 @@
     <div class="container">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
-            <a class="navbar-brand" href="#">CadPe</a>
+
+            <img src="img/pessoas.jpeg" height="60px" class="navbar-brand rounded-circle">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <span class="navbar-text">Cadastro de Pessoas</span>
+                    <a class="nav-item nav-link" href="#" id="linkInicio">Início
+                        <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#" id="linkListarPessoas">Listar</a>
+                    <a class="nav-item nav-link" data-toggle="modal" 
+                        data-target="#modalIncluirPessoa" href="#">Incluir</a>
+                </div>
+            </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav mr-auto">
-                    <span class="navbar-text">Cadastro de Pessoas</span>
-                    <a class="nav-item nav-link" href="#" id="linkInicio">Início<span
-                            class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#" id="linkListarPessoas">Listar</a>
-                    <a class="nav-item nav-link" data-toggle="modal" data-target="#modalIncluirPessoa"
-                        href="#">Incluir</a>
-                </div>
-            </div>
         </nav>
 
         <div id="corpoDaPagina">
@@ -55,21 +57,21 @@
                             <form>
                                 <div class="form-group">
                                     <label for="campoNome">Nome</label>
-                                    <input value="alguem" type="text" class="form-control" id="campoNome"
+                                    <input type="text" class="form-control" id="campoNome"
                                         aria-describedby="nomeHelp" placeholder="Nome">
                                     <small id="nomeHelp" class="form-text text-muted">Informe o seu nome completo, sem
                                         abreviações.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="campoEmail">Email</label>
-                                    <input value="alguem@gmail.com" type="text" class="form-control" id="campoEmail"
+                                    <input type="text" class="form-control" id="campoEmail"
                                         aria-describedby="emailHelp" placeholder="Email">
-                                    <small id="emailHelp" class="form-text text-muted">Seu email será utilizado apenas
-                                        para contato em nosso sistema.</small>
+                                    <small id="emailHelp" class="form-text text-muted">Seu email será 
+                                        utilizado apenas para contato em nosso sistema.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="campoTelefone">Telefone</label>
-                                    <input value="99123-1212" type="text" class="form-control" id="campoTelefone"
+                                    <input type="text" class="form-control" id="campoTelefone"
                                         aria-describedby="telefoneHelp" placeholder="Telefone">
                                     <small id="telefoneHelp" class="form-text text-muted">Informe com DDD.</small>
                                 </div>
