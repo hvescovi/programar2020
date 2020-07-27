@@ -55,13 +55,13 @@ $(function() { // quando o documento estiver pronto/carregado
         email = $("#campoEmail").val();
         tel = $("#campoTelefone").val();
         // preparar dados no formato json
-        var dados = JSON.stringify({ nome: nome, email: email, telefone: tel })        
+        var dados = JSON.stringify({ nome: nome, email: email, telefone: tel });
         // fazer requisição para o back-end
         $.ajax({
             url: 'http://localhost:5000/incluir_pessoa',
             type: 'POST',
             dataType: 'json', // os dados são recebidos no formato json
-            contentType: 'application/json', //content type
+            contentType: 'application/json', // tipo dos dados enviados
             data: dados, // estes são os dados enviados
             success: pessoaIncluida, // chama a função listar para processar o resultado
             error: erroAoIncluir
