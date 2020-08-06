@@ -2,8 +2,9 @@ package teste;
 
 import java.io.IOException;
 
-//import dao.memoria.PessoaDAO;
-import dao.json.PessoaDAO;
+import dao.DAOException;
+import dao.memoria.PessoaDAO;
+//import dao.json.PessoaDAO;
 import modelo.Pessoa;
 
 public class TestarPessoaDAO {
@@ -18,7 +19,7 @@ public class TestarPessoaDAO {
 			pdao.incluirPessoa(new Pessoa("Tiago Tomé", "tito@gmail.com", "47 9 9231 1234"));
 			pdao.incluirPessoa(new Pessoa("Suzana Vieira", "suvi@gmail.com", "47 9 9312 5324"));
 			pdao.incluirPessoa(new Pessoa("Paulo Horn", "pahorn@gmail.com", "47 9 8853 5342"));
-		} catch (IOException ex) {
+		} catch (DAOException ex) {
 			System.out.println("Erro: "+ex.getMessage());
 		}
 		System.out.println("3 pessoas criadas");

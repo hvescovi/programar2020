@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/friend/01-github/programar2020/99-fundamentos/java/javax.json-1.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/friend/Documents/01-github/programar2020/99-fundamentos/java/javax.json-1.1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

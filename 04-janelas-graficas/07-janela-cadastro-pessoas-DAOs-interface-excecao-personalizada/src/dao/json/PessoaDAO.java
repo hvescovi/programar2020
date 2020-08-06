@@ -13,6 +13,7 @@ import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import dao.DAOException;
 import dao.PessoaDAOInterface;
 import modelo.Pessoa;
 
@@ -28,7 +29,7 @@ public class PessoaDAO implements PessoaDAOInterface {
 			caminho = "/tmp/";
 		}
 	}
-	public void incluirPessoa(Pessoa nova) throws IOException {
+	public void incluirPessoa(Pessoa nova) throws DAOException {
 		// modelar a pessoa em json
 		JsonObject novo = Json.createObjectBuilder().add(
 				"nome", nova.getNome()).add("email", nova.getEmail())
@@ -38,6 +39,7 @@ public class PessoaDAO implements PessoaDAOInterface {
 		// o arquivo json ja existe?
 		File f = new File(caminho + nomeArquivo);
 		if (f.exists() && !f.isDirectory()) {
+			try {
 				// carregar o arquivo
 				String conteudo = new String(Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
 				// converter a string para json (parsing)
@@ -59,14 +61,21 @@ public class PessoaDAO implements PessoaDAOInterface {
 				jab.add(novo);
 				// preparar conteudo a ser gravado
 				gravar = jab.build().toString();
+			} catch (IOException ioe) {
+				throw new DAOException("Erro de entrada/saída: "+ioe.getMessage());
+			}
 		} else {
 			// construir vetor com apenas 1 elemento
 			JsonArray jab = Json.createArrayBuilder().add(novo).build();
 			// preparar conteudo a ser gravado
 			gravar = jab.toString();
 		}
-		// gravar o novo conteudo no arquivo
+		try { 
+	        // gravar o novo conteudo no arquivo
 			Files.write(Paths.get(caminho + nomeArquivo), gravar.getBytes("utf-8"), StandardOpenOption.CREATE);
+		} catch (IOException ioe) {
+			throw new DAOException("Erro de entrada/saída: "+ioe.getMessage());
+		}
 	}
 	public ArrayList<Pessoa> retornarPessoas() {
 		// prepara a lista de retorno
