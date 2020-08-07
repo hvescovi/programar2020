@@ -12,13 +12,11 @@ public class Operacoes03TryCompleto {
             int n = sc.nextInt();
             System.out.print("Digite o denominador: ");
             d = sc.nextInt();
-            float resultado = n / d;
-            System.out.format("%d dividido por %d é %.2f",n, d, resultado);
-        } catch (ArithmeticException ae) {
             if (d == 0) {
                 System.out.println("Erro: denominador igual a zero.");
             } else {
-                System.out.println("Erro de aritmética: " + ae.getMessage());
+            	float resultado = (float) n / d;
+            	System.out.format("%d dividido por %d é %.2f",n, d, resultado);
             }
         } catch (InputMismatchException im) {
             System.out.println("Foi informado um valor que não é um número!");

@@ -71,8 +71,8 @@ public class PessoaDAO implements PessoaDAOInterface {
 			// preparar conteudo a ser gravado
 			gravar = jab.toString();
 		}
-		// gravar o novo conteudo no arquivo
 		try {
+			// gravar o novo conteudo no arquivo
 			Files.write(Paths.get(caminho + nomeArquivo), gravar.getBytes("utf-8"), StandardOpenOption.CREATE);
 		} catch (IOException e) {
 			e.printStackTrace();

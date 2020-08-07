@@ -38,6 +38,7 @@ public class PessoaDAO implements PessoaDAOInterface {
 		// o arquivo json ja existe?
 		File f = new File(caminho + nomeArquivo);
 		if (f.exists() && !f.isDirectory()) {
+			//try {
 				// carregar o arquivo
 				String conteudo = new String(Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
 				// converter a string para json (parsing)
@@ -59,14 +60,21 @@ public class PessoaDAO implements PessoaDAOInterface {
 				jab.add(novo);
 				// preparar conteudo a ser gravado
 				gravar = jab.build().toString();
+			//} catch (IOException e) {
+			//	e.printStackTrace();
+			//}
 		} else {
 			// construir vetor com apenas 1 elemento
 			JsonArray jab = Json.createArrayBuilder().add(novo).build();
 			// preparar conteudo a ser gravado
 			gravar = jab.toString();
 		}
-		// gravar o novo conteudo no arquivo
+		//try {
+			// gravar o novo conteudo no arquivo
 			Files.write(Paths.get(caminho + nomeArquivo), gravar.getBytes("utf-8"), StandardOpenOption.CREATE);
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//}
 	}
 	public ArrayList<Pessoa> retornarPessoas() {
 		// prepara a lista de retorno

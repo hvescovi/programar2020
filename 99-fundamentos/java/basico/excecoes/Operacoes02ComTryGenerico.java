@@ -10,9 +10,13 @@ public class Operacoes02ComTryGenerico {
         try {
             int n = sc.nextInt();
             System.out.print("Digite o denominador: ");
-            int d = sc.nextInt();       
-            float resultado = (float) n / d;
-            System.out.format("%d dividido por %d é %.2f", n, d, resultado);
+            int d = sc.nextInt(); 
+            if (d == 0) {
+                System.out.println("Erro: denominador igual a zero.");
+            } else {
+            	float resultado = (float) n / d;
+            	System.out.format("%d dividido por %d é %.2f", n, d, resultado);
+            }
         } catch (Exception ex) {
             System.out.println("Ocorreu um erro: " + ex.getMessage());
         }

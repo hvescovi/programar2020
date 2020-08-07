@@ -20,8 +20,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import dao.memoria.PessoaDAO;
-//import dao.json.PessoaDAO;
+//import dao.memoria.PessoaDAO;
+import dao.json.PessoaDAO;
 import modelo.Pessoa;
 
 public class TelaDePessoas extends JFrame {
@@ -92,12 +92,12 @@ public class TelaDePessoas extends JFrame {
 				String tel = txtTelefone.getText();
 				// criar a nova pessoa
 				Pessoa nova = new Pessoa(nome, email, tel);
-				//try {
+				try {
 				// adicionar na camada de dados
 				pdao.incluirPessoa(nova);
-				//} catch (IOException ex) {
-				//	JOptionPane.showMessageDialog(null,  "Erro: "+ ex.getMessage());
-				//}
+				} catch (IOException ex) {
+					JOptionPane.showMessageDialog(null,  "Erro: "+ ex.getMessage());
+				}
 				// adicionar na tela
 				dadosTabela.addRow(new String[] {nova.getNome(),
 						nova.getTelefone(), nova.getEmail()});

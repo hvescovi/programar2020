@@ -8,7 +8,7 @@ public class Operacoes01Erro {
         int n = sc.nextInt(); // aguarda digitação de número
         System.out.print("Digite o denominador: ");
         int d = sc.nextInt(); // aguarda digitação de número
-        float resultado = ((float) n)/d; // calcula a divisão
+        float resultado = (float) n/d; // calcula a divisão inteira
         System.out.format("%d dividido por %d é %.2f",n,d,resultado);
     }    
 }
