@@ -11,7 +11,9 @@ def listar_plantas():
     retorno = []    
     for p in plantas:
         retorno.append(p.json())
-    return jsonify(retorno)
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
 
 @app.route("/incluir_planta", methods=['post'])
 def incluir_planta():
