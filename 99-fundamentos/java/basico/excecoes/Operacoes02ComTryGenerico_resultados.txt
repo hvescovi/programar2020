@@ -1,0 +1,10 @@
+CASO 1:
+Programa que divide numeros
+Digite o numerador: 5
+Digite o denominador: 0
+Erro: denominador igual a zero.
+CASO 2:
+Programa que divide numeros
+Digite o numerador: 5
+Digite o denominador: casa
+Ocorreu um erro: null

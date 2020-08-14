@@ -1,4 +1,5 @@
 package basico.excecoes;
+
 import java.util.Scanner;
 
 public class Operacoes01Erro {

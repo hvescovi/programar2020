@@ -1,0 +1,3 @@
+Divisão de números. Digite o numerador: 5
+Digite o denominador: 0
+5 dividido por 0 é Infinity

@@ -1,0 +1,8 @@
+Divisão de números. Digite o numerador: 5
+Digite o denominador: casa
+Exception in thread "main" java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at basico.excecoes.Operacoes01Erro.main(Operacoes01Erro.java:11)

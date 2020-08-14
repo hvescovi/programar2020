@@ -7,11 +7,10 @@ public class Operacoes03TryCompleto {
         System.out.println("Programa que divide números");
         System.out.print("Digite o numerador: ");
         Scanner sc = new Scanner(System.in);
-        int d = -1; //inicializar variável para que exista fora do try
         try {
             int n = sc.nextInt();
             System.out.print("Digite o denominador: ");
-            d = sc.nextInt();
+            int d = sc.nextInt();
             if (d == 0) {
                 System.out.println("Erro: denominador igual a zero.");
             } else {
