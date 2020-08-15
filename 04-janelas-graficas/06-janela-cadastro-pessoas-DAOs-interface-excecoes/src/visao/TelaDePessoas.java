@@ -93,10 +93,11 @@ public class TelaDePessoas extends JFrame {
 				// criar a nova pessoa
 				Pessoa nova = new Pessoa(nome, email, tel);
 				try {
-				// adicionar na camada de dados
-				pdao.incluirPessoa(nova);
+				  // adicionar na camada de dados
+				  pdao.incluirPessoa(nova);
 				} catch (IOException ex) {
-					JOptionPane.showMessageDialog(null,  "Erro: "+ ex.getMessage());
+					JOptionPane.showMessageDialog(null,  
+				      "Erro de caminho inválido: "+ ex.getMessage());
 				}
 				// adicionar na tela
 				dadosTabela.addRow(new String[] {nova.getNome(),

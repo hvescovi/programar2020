@@ -25,7 +25,7 @@ public class PessoaDAO implements PessoaDAOInterface {
 		if (nomeSo.contains("win")) { // estamos executando no windows?
 			caminho = "C:/temp/";
 		} else { // estamos no linux (desconsiderando MacOS)
-			caminho = "/tmp/";
+			caminho = "/xxtmp/";
 		}
 	}
 	public void incluirPessoa(Pessoa nova) throws IOException {
@@ -35,9 +35,14 @@ public class PessoaDAO implements PessoaDAOInterface {
 				.add("telefone", nova.getTelefone()).build();
 		// conteudo final que sera escrito no arquivo, ao final do processamento
 		String gravar = "";
-		// o arquivo json ja existe?
+		// o arquivo json ainda não existe?
 		File f = new File(caminho + nomeArquivo);
-		if (f.exists() && !f.isDirectory()) {
+		if (!f.exists()) {
+				// construir vetor com apenas 1 elemento
+				JsonArray jab = Json.createArrayBuilder().add(novo).build();
+				// preparar conteudo a ser gravado
+				gravar = jab.toString();
+			} else {
 			//try {
 				// carregar o arquivo
 				String conteudo = new String(Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
@@ -63,12 +68,7 @@ public class PessoaDAO implements PessoaDAOInterface {
 			//} catch (IOException e) {
 			//	e.printStackTrace();
 			//}
-		} else {
-			// construir vetor com apenas 1 elemento
-			JsonArray jab = Json.createArrayBuilder().add(novo).build();
-			// preparar conteudo a ser gravado
-			gravar = jab.toString();
-		}
+		} 
 		//try {
 			// gravar o novo conteudo no arquivo
 			Files.write(Paths.get(caminho + nomeArquivo), gravar.getBytes("utf-8"), StandardOpenOption.CREATE);

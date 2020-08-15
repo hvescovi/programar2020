@@ -19,7 +19,8 @@ public class TestarPessoaDAO {
 			pdao.incluirPessoa(new Pessoa("Suzana Vieira", "suvi@gmail.com", "47 9 9312 5324"));
 			pdao.incluirPessoa(new Pessoa("Paulo Horn", "pahorn@gmail.com", "47 9 8853 5342"));
 		} catch (IOException ex) {
-			System.out.println("Erro: "+ex.getMessage());
+			System.out.println("(ERRO) Não foi possível acessar: "+ex.getMessage());
+			System.exit(0);
 		}
 		System.out.println("3 pessoas criadas");
 		// listar pessoas
