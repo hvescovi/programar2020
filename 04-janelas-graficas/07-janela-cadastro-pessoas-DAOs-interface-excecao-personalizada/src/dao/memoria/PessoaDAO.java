@@ -2,7 +2,6 @@ package dao.memoria;
 
 import java.util.ArrayList;
 
-import dao.DAOException;
 import dao.PessoaDAOInterface;
 import modelo.Pessoa;
 
@@ -11,7 +10,7 @@ public class PessoaDAO implements PessoaDAOInterface {
 	public ArrayList<Pessoa> retornarPessoas() {
 		return pessoas;
 	}
-	public void incluirPessoa(Pessoa nova) throws DAOException {
+	public void incluirPessoa(Pessoa nova) throws Exception {
 		pessoas.add(nova);
 	}
 	public void removerPessoa(String nome) {
@@ -28,6 +27,6 @@ public class PessoaDAO implements PessoaDAOInterface {
 	}
 	@Override
 	public void reiniciarDados() {
-		// não faz nada		
+		// nï¿½o faz nada		
 	}
 }

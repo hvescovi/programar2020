@@ -3,7 +3,6 @@ package visao;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,9 +19,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import dao.DAOException;
-import dao.memoria.PessoaDAO;
-//import dao.json.PessoaDAO;
+//import dao.memoria.PessoaDAO;
+import dao.json.PessoaDAO;
 import modelo.Pessoa;
 
 public class TelaDePessoas extends JFrame {
@@ -96,7 +94,7 @@ public class TelaDePessoas extends JFrame {
 				try {
 				// adicionar na camada de dados
 				pdao.incluirPessoa(nova);
-				} catch (DAOException ex) {
+				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null,  "Erro: "+ ex.getMessage());
 				}
 				// adicionar na tela

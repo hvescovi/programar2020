@@ -13,7 +13,6 @@ import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import dao.DAOException;
 import dao.PessoaDAOInterface;
 import modelo.Pessoa;
 
@@ -29,16 +28,21 @@ public class PessoaDAO implements PessoaDAOInterface {
 			caminho = "/tmp/";
 		}
 	}
-	public void incluirPessoa(Pessoa nova) throws DAOException {
+	public void incluirPessoa(Pessoa nova) throws Exception {
 		// modelar a pessoa em json
 		JsonObject novo = Json.createObjectBuilder().add(
 				"nome", nova.getNome()).add("email", nova.getEmail())
 				.add("telefone", nova.getTelefone()).build();
 		// conteudo final que sera escrito no arquivo, ao final do processamento
 		String gravar = "";
-		// o arquivo json ja existe?
+		// o arquivo json ainda n√£o existe?
 		File f = new File(caminho + nomeArquivo);
-		if (f.exists() && !f.isDirectory()) {
+		if (!f.exists()) {
+			// construir vetor com apenas 1 elemento
+			JsonArray jab = Json.createArrayBuilder().add(novo).build();
+			// preparar conteudo a ser gravado
+			gravar = jab.toString();
+		} else {
 			try {
 				// carregar o arquivo
 				String conteudo = new String(Files.readAllBytes(Paths.get(caminho + nomeArquivo)));
@@ -62,19 +66,14 @@ public class PessoaDAO implements PessoaDAOInterface {
 				// preparar conteudo a ser gravado
 				gravar = jab.build().toString();
 			} catch (IOException ioe) {
-				throw new DAOException("Erro de entrada/saÌda: "+ioe.getMessage());
+				throw new Exception("Erro de entrada/sa√≠da: "+ioe.getMessage());
 			}
-		} else {
-			// construir vetor com apenas 1 elemento
-			JsonArray jab = Json.createArrayBuilder().add(novo).build();
-			// preparar conteudo a ser gravado
-			gravar = jab.toString();
 		}
 		try { 
 	        // gravar o novo conteudo no arquivo
 			Files.write(Paths.get(caminho + nomeArquivo), gravar.getBytes("utf-8"), StandardOpenOption.CREATE);
 		} catch (IOException ioe) {
-			throw new DAOException("Erro de entrada/saÌda: "+ioe.getMessage());
+			throw new Exception("Erro de entrada/sa√≠da: "+ioe.getMessage());
 		}
 	}
 	public ArrayList<Pessoa> retornarPessoas() {
