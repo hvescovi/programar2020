@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import modelo.Pessoa;
 
