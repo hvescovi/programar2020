@@ -43,8 +43,8 @@ public class EstruturasDeControleBasicas {
 			i++; // incrementa o contador de uma unidade
 		}
 		
-		// operações & resultado após a execução
 		i = 0;               // 0
+		// operações de atribuição & resultado após a execução
 		i += 4;            // 4
 		i -= 1;             // 3
 		i *= 6;            // 18 
@@ -58,17 +58,20 @@ public class EstruturasDeControleBasicas {
 		i = 10;
        System.out.println(--i); // mostra 9
        System.out.println(i--); // mostra 9
-		
+       i = 0;
+       System.out.printf("vou mostrar/usar, e depois usar/mostrar: %d %d",
+    		   i++, ++i); // 0, 2
+       
 	   // tipos de dados primitivos
-       boolean verdade = true; // 
+       boolean verdade = true; // (1 byte) 
        boolean maior = (5 > 7); // false
-       char letra = 'A'; // '\u0000' até '\uFFFF'
+       char letra = 'A'; // '\u0000' até '\uFFFF' (2 bytes)
        char ze = '\u005a'; // Z
-       byte n = 100; // -128 a +127
-       short ano = 2020; // -32768 a +32767
-       int populacao = 300000; // -2.147.483.648 a 2.147.486.647
-       long visualizacoes = 1234567890; // -9.233.372.036.854.775.808 a +isso-1
-       float media = 9.9f; // -3.40292347E+38 a +isso
-       double grande = 123456789.123456789; ; // -1.79769313486231570E+308 a +isso 
-	}
+       byte n = 100; // -128 a +127 (1 byte)
+       short ano = 2020; // -32768 a +32767 (2 bytes)
+       int populacao = 300000; // -2.147.483.648 a 2.147.486.647 (4 bytes)
+       long visualizacoes = 1234567890; // -9.233.372.036.854.775.808 a +isso-1 (8 bytes)
+       float media = 9.9f; // -3.40292347E+38 a +isso (4 bytes)
+       double grande = 123456789.123456789; // -1.79769313486231570E+308 a +isso (8 bytes) 
+	}	
 }
