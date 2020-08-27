@@ -43,4 +43,45 @@ $( document ).ready(function() {
 
     });
 
+    $("#btn_incluir_planta").click(function(){
+
+        // obter os dados da tela (do formulário modal)
+        nome_planta = $("#nome_planta").val();
+        nome_cientifico = $("#nome_cientifico").val();
+        tamanho_folha = $("#tamanho_folha").val();
+        periodo_poda = $("#periodo_poda").val();
+
+        // preparar os dados para envio (json)
+        dados = JSON.stringify({nome : nome_planta, nome_cientifico: nome_cientifico, 
+            tamanho_folha: tamanho_folha, periodo_poda: periodo_poda});
+
+        // mandar para o back-end
+        $.ajax({
+            url : 'http://localhost:5000/incluir_planta',
+            type : 'POST',
+            contentType : 'application/json', // enviando dados em json
+            dataType: 'json',
+            data: dados,
+            success: incluirPlanta,
+            error: erroIncluirPlanta
+        });
+        function incluirPlanta(resposta) {
+            if (resposta.resultado == "ok") {
+                // exibe mensagem de sucesso
+                alert('Planta incluída com sucesso');
+                // limpar valores dos campos do formulário
+                $("#nome_planta").val("");
+                $("#nome_cientifico").val("");
+                $("#tamanho_folha").val("");
+                $("#periodo_poda").val("");
+            } else {
+                alert('erro na comunicação');
+            }
+        }
+        function erroIncluirPlanta(resposta) {
+            alert("Deu ruim na chamada ao back-end");
+        }
+    });
+    
+
   });
