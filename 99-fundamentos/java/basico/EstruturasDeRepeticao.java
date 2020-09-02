@@ -17,7 +17,7 @@ public class EstruturasDeRepeticao {
 		int sentinela = 0; // controlador da repetição
 		contador = 1;
 		while (sentinela == 0) {
-			if (contador % 4 == 0 && contador % 3 == 0 && contador > 20) {
+			if (contador % 2 == 0 && contador % 3 == 0 && contador > 20) {
 				sentinela = 1; //sinalizar encerramento de repetição
 				System.out.printf("Valor que atende a condição: %d", contador);
 			} else {
