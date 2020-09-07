@@ -66,10 +66,8 @@ public class Colecoes {
         }
         
         /* Resultado da execução:
-         
         Sabem Java e PHP: Teresa
-        Sabem Java mas não sabem PHP: Joao
-        
+        Sabem Java mas não sabem PHP: Joa
         */
         
         // mapeamento de pessoas por meio de CPF
@@ -83,9 +81,7 @@ public class Colecoes {
         System.out.println("Nome: "+alguem.getNome());
         
         /* Resultado da execução:
-          
         Nome: Teresa
-         
         */
 	}
 }

@@ -25,3 +25,6 @@ class TiposDeDados {
         System.out.printf("Média entre %.2f e %.2f é %.2f\n", av1, av2, media);
     }
 }
+
+// ADICIONAR ENUM livro Estruturas de Dados e Algoritmos  GoodRich, pg 14
+// trazer final da seção de estrututas de controle básicas para cá (tem tipos de dados lá)
