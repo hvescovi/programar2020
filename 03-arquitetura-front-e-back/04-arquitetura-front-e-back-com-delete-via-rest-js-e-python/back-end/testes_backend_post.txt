@@ -1,0 +1,15 @@
+$ curl -d '{"nome":"James Kirk", "telefone":"92212-1212", "email":"jakirk@gmail.com"}' -X POST -H "Content-Type:application/json" localhost:5000/incluir_pessoa
+{
+  "detalhes": "ok", 
+  "resultado": "ok"
+}
+$ curl -d '{"nomeX":"James Kirk", "telefone":"92212-1212", "email":"jakirk@gmail.com"}' -X POST -H "Content-Type:application/json" localhost:5000/incluir_pessoa
+{
+  "detalhes": "'nomeX' is an invalid keyword argument for Pessoa", 
+  "resultado": "erro"
+}
+$ curl -d '{"nomeX":"James Kirk", "telefone":"92212-1212", "email":"jakirk@gmail.com"}' -X POST localhost:5000/incluir_pessoa
+{
+  "detalhes": "DefaultMeta object argument after ** must be a mapping, not NoneType", 
+  "resultado": "erro"
+}
