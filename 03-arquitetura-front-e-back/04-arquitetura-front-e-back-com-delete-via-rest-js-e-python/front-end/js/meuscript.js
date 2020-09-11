@@ -18,10 +18,13 @@ $(function() { // quando o documento estiver pronto/carregado
             mostrar_conteudo("tabelaPessoas");      
             // percorrer a lista de pessoas retornadas; 
             for (var i in pessoas) { //i vale a posição no vetor
-                lin = '<tr>' + // elabora linha com os dados da pessoa
+                lin = '<tr id="linha_'+pessoas[i].id+'">' + 
                 '<td>' + pessoas[i].nome + '</td>' + 
                 '<td>' + pessoas[i].email + '</td>' + 
                 '<td>' + pessoas[i].telefone + '</td>' + 
+                '<td><a href=# id="excluir_' + pessoas[i].id + '" ' + 
+                  'class="excluir_pessoa"><img src="img/excluir.png"></a>' + 
+                '</td>' + 
                 '</tr>';
                 // adiciona a linha no corpo da tabela
                 $('#corpoTabelaPessoas').append(lin);
@@ -96,4 +99,38 @@ $(function() { // quando o documento estiver pronto/carregado
 
     // a função abaixo é executada quando a página abre
     mostrar_conteudo("conteudoInicial");
+
+    // código para os ícones de excluir pessoas (classe css)
+    $(document).on("click", ".excluir_pessoa", function() {
+        // obter o ID do ícone que foi clicado
+        var componente_clicado = $(this).attr('id'); 
+        // no id do ícone, obter o ID da pessoa
+        var nome_icone = "excluir_";
+        var id_pessoa = componente_clicado.substring(nome_icone.length);
+        // solicitar a exclusão da pessoa
+        $.ajax({
+            url: 'http://localhost:5000/excluir_pessoa/'+id_pessoa,
+            type: 'DELETE', // método da requisição
+            dataType: 'json', // os dados são recebidos no formato json
+            success: pessoaExcluida, // chama a função listar para processar o resultado
+            error: erroAoExcluir
+        });
+        function pessoaExcluida (retorno) {
+            if (retorno.resultado == "ok") { // a operação deu certo?
+                // remover da tela a linha cuja pessoa foi excluída
+                $("#linha_" + id_pessoa).fadeOut(1000, function(){
+                    // informar resultado de sucesso
+                    alert("Pessoa removida com sucesso!");
+                });
+            } else {
+                // informar mensagem de erro
+                alert(retorno.resultado + ":" + retorno.detalhes);
+            }            
+        }
+        function erroAoExcluir (retorno) {
+            // informar mensagem de erro
+            alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes);
+        }
+    });
+    
 });

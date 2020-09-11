@@ -36,8 +36,8 @@ def incluir_pessoa():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta # responder!
 
-# teste: curl -X DELETE http://localhost:5000/remover_pessoa/1
-@app.route("/remover_pessoa/<int:pessoa_id>", methods=['delete'])
+# teste: curl -X DELETE http://localhost:5000/excluir_pessoa/1
+@app.route("/excluir_pessoa/<int:pessoa_id>", methods=['DELETE'])
 def remover_pessoa(pessoa_id):
     # preparar uma resposta otimista
     resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
