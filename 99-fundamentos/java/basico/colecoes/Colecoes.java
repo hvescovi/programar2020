@@ -1,6 +1,8 @@
 package basico.colecoes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -82,6 +84,38 @@ public class Colecoes {
         
         /* Resultado da execução:
         Nome: Teresa
+        */
+        
+        // recurso especial de lista: ordenação
+        
+        // cria um vetor de nomes de cores
+        String[] nomesCores = {"Azul", "Amarelo", "Verde", 
+        		"Cinza", "Preto", "Branco", "Laranja", "Roxo"};
+        // cria uma lista baseada no vetor
+        ArrayList<String> cores = new 
+        		ArrayList<String>(Arrays.asList(nomesCores));
+        // ordena crescente
+        Collections.sort(cores);
+        System.out.print("Cores em ordem crescente: ");
+        for (String cor : cores) {
+        	System.out.printf("%s ", cor);
+        }
+        
+        /* resultado da execução:
+        Cores em ordem crescente: Amarelo Azul Branco Cinza Laranja 
+          Preto Roxo Verde 
+        */
+        
+        // embararalha a ordem
+        Collections.shuffle(cores);
+        System.out.print("\nCores em ordem embaralhada: ");
+        for (String cor : cores) {
+        	System.out.printf("%s ", cor);
+        }
+        
+        /* resultado da execução:
+        Cores em ordem embaralhada: Amarelo Roxo Cinza Preto Branco 
+          Verde Azul Laranja 
         */
 	}
 }
