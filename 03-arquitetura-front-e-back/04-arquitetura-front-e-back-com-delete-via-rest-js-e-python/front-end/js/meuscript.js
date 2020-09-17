@@ -7,8 +7,8 @@ $(function() { // quando o documento estiver pronto/carregado
             method: 'GET',
             dataType: 'json', // os dados são recebidos no formato json
             success: listar, // chama a função listar para processar o resultado
-            error: function() {
-                alert("erro ao ler dados, verifique o backend");
+            error: function(problema) {
+                alert("erro ao ler dados, verifique o backend: ");
             }
         });
         function listar (pessoas) {
@@ -23,7 +23,8 @@ $(function() { // quando o documento estiver pronto/carregado
                 '<td>' + pessoas[i].email + '</td>' + 
                 '<td>' + pessoas[i].telefone + '</td>' + 
                 '<td><a href=# id="excluir_' + pessoas[i].id + '" ' + 
-                  'class="excluir_pessoa"><img src="img/excluir.png"></a>' + 
+                  'class="excluir_pessoa"><img src="img/excluir.png" '+
+                  'alt="Excluir pessoa" title="Excluir pessoa"></a>' + 
                 '</td>' + 
                 '</tr>';
                 // adiciona a linha no corpo da tabela
@@ -84,7 +85,7 @@ $(function() { // quando o documento estiver pronto/carregado
         }
         function erroAoIncluir (retorno) {
             // informar mensagem de erro
-            alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes);
+            alert("erro ao incluir dados, verifique o backend: ");
         }
     });
 
@@ -129,7 +130,7 @@ $(function() { // quando o documento estiver pronto/carregado
         }
         function erroAoExcluir (retorno) {
             // informar mensagem de erro
-            alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes);
+            alert("erro ao excluir dados, verifique o backend: ");
         }
     });
     
