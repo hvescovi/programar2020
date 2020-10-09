@@ -23,7 +23,7 @@ class Pessoa(db.Model):
 class ExameRealizado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(254)) # data do exame
-    nome = db.Column(db.String(254)) # nome do exame: B12, Vitamina D3, ...
+    nome = db.Column(db.String(254)) # nome do exame: B12, D3, etc
     resultado = db.Column(db.String(254)) # valor com unidade
     
     # atributo de chave estrangeira
@@ -61,7 +61,7 @@ class Respirador(db.Model):
     id = db.Column(db.Integer, primary_key=True) # id interno
     codigo = db.Column(db.String(254)) # código do equipamento
     data_aquisicao = db.Column(db.String(254))
-    data_emprestimo = db.Column(db.String(254)) # emprestado? desde quando
+    data_emprestimo = db.Column(db.String(254)) # emprestado? se sim, desde quando?
 
     # atributo de chave estrangeira
     pessoa_id = db.Column(db.Integer, db.ForeignKey(Pessoa.id))
@@ -83,7 +83,7 @@ class Respirador(db.Model):
             pessoa_id = self.pessoa_id
             pessoa = self.pessoa.json()
             data_emprestimo = self.data_emprestimo
-        
+            
         return {
             "id": self.id,
             "codigo": self.codigo,
@@ -124,19 +124,28 @@ if __name__ == "__main__":
         resultado="219,0 pg/mL", pessoa=p1)
     db.session.add(e1)
     db.session.commit()
-    print(e1)
-    print(e1.json())
+    print(f"Exame realizado: {e1}")
+    print(f"Exame realizado em json: {e1.json()}")
+    # resultado:
+    # Exame realizado: 02/02/2020, Vitamina B12, 219,0 pg/mL, João da Silva[id=1], josilva@gmail.com, 47 99012 3232
+    # Exame realizado em json: {'id': 1, 'data': '02/02/2020', 'nome': 'Vitamina B12', 'resultado': '219,0 pg/mL', 'pessoa_id': 1, 'pessoa': {'id': 1, 'nome': 'João da Silva', 'email': 'josilva@gmail.com', 'telefone': '47 99012 3232'}}
 
     # vamos criar um respirador que está disponível
     r1 = Respirador(codigo="001A", data_aquisicao="24/03/2020")
     db.session.add(r1)
     db.session.commit()
-    print(r1)
-    print(r1.json())
+    print(f"Respirador 1: {r1}")
+    print(f"Respirador 1 (em json): {r1.json()}")
+    # resultado:
+    # Respirador 1: Respirador 001A adquirido em 24/03/2020
+    # Respirador 1 (em json): {'id': 1, 'codigo': '001A', 'data_aquisicao': '24/03/2020', 'pessoa_id': '', 'pessoa': '', 'data_emprestimo': ''}
 
     # agora, um respirador emprestado para João
     r2 = Respirador(codigo="002B", data_aquisicao="01/02/2020", pessoa = p1, data_emprestimo="04/02/2020")
     db.session.add(r2)
     db.session.commit()
-    print(r2)
-    print(r2.json())
+    print(f"Respirador 2: {r2}")
+    print(f"Respirador 2 (em json): {r2.json()}")
+    # resultado:
+    # Respirador 2: Respirador 002B adquirido em 01/02/2020, emprestado para João da Silva[id=1], josilva@gmail.com, 47 99012 3232 desde 01/02/2020
+    # Respirador 2 (em json): {'id': 2, 'codigo': '002B', 'data_aquisicao': '01/02/2020', 'pessoa_id': 1, 'pessoa': {'id': 1, 'nome': 'João da Silva', 'email': 'josilva@gmail.com', 'telefone': '47 99012 3232'}, 'data_emprestimo': '04/02/2020'}
