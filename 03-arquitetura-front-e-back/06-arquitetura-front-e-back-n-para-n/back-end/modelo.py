@@ -20,29 +20,48 @@ class Pessoa(db.Model):
             "telefone": self.telefone
         }
 
+class Exame(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(254)) # nome do exame
+    unidade = db.Column(db.String(254)) # unidade de medida
+    vr = db.Column(db.String(254)) # valores de referência
+    
+    def __str__(self):
+        return f"{self.nome} [{self.id}], unidade={self.unidade} ({self.vr})"  
+
+    def json(self):
+        return {
+            "id":self.id,
+            "nome":self.nome,
+            "unidade":self.unidade,
+            "vr":self.vr
+        }
+    
 class ExameRealizado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(254)) # data do exame
-    nome = db.Column(db.String(254)) # nome do exame: B12, D3, etc
-    resultado = db.Column(db.String(254)) # valor com unidade
+    resultado = db.Column(db.String(254)) # apenas o valor
     
-    # atributo de chave estrangeira
+    # pessoa que fez o exame; não pode ser nulo (composição!)
     pessoa_id = db.Column(db.Integer, db.ForeignKey(Pessoa.id), nullable=False)
-    # atributo de relacionamento, para acesso aos dados via objeto
     pessoa = db.relationship("Pessoa")
+    # exame que foi realizado; não pode ser nulo (composição!)
+    exame_id =  db.Column(db.Integer, db.ForeignKey(Exame.id), nullable=False)
+    exame = db.relationship("Exame")
 
     def __str__(self): # expressão da classe em forma de texto
-        return self.data + ", " + self.nome + ", " + self.resultado + \
-            ", " + str(self.pessoa) # o str aciona o __str__ da classe Pessoa
+        return f"{self.data}, {self.resultado}, " + \
+            f"{str(self.pessoa)}, {str(self.exame)}"
 
     def json(self):
         return {
             "id":self.id,
             "data":self.data,
-            "nome":self.nome,
             "resultado":self.resultado,
             "pessoa_id":self.pessoa_id,
-            "pessoa":self.pessoa.json() 
+            "pessoa":self.pessoa.json(),
+            "exame_id":self.exame_id,
+            "exame":self.exame.json()
         }
 
 class Respirador(db.Model):
@@ -63,7 +82,7 @@ class Respirador(db.Model):
         return s
 
     def json(self):
-        if self.pessoa is None: # o respirador está livre?
+        if self.pessoa is None: # o respirador não está emprestado?
             pessoa_id = ""
             pessoa = ""
             data_emprestimo = ""
@@ -90,55 +109,34 @@ if __name__ == "__main__":
     # criar tabelas
     db.create_all()
 
-    # teste da classe Pessoa
+    # criar pessoas
     p1 = Pessoa(nome = "João da Silva", email = "josilva@gmail.com", 
         telefone = "47 99012 3232")
     p2 = Pessoa(nome = "Maria Oliveira", email = "molive@gmail.com", 
         telefone = "47 98822 2531")        
-    # persistir
     db.session.add(p1)
     db.session.add(p2)
     db.session.commit()
     
-    print(p2) # exibir a pessoa
-    print(p2.json()) # exibir a pessoa no format json
+    # criar exames
+    b12 = Exame(nome="B12", unidade="pg/mL", vr="239 a 931")
+    colesterol = Exame(nome="Colesterol total", unidade="mg/dL", vr="menor que 150")
 
-    # novo resultado de exame
-    e1 = ExameRealizado(data="02/02/2020", nome="Vitamina B12", 
+    # criar resultado de exame
+    e1 = ExameRealizado(data="02/02/2020", exame=b12, 
         resultado="219,0 pg/mL", pessoa=p1)
     db.session.add(e1)
     db.session.commit()
     print(f"Exame realizado: {e1}")
     print(f"Exame realizado em json: {e1.json()}")
-    # resultado:
-    # Exame realizado: 02/02/2020, Vitamina B12, 219,0 pg/mL, João da Silva[id=1], josilva@gmail.com, 47 99012 3232
-    # Exame realizado em json: {'id': 1, 'data': '02/02/2020', 'nome': 'Vitamina B12', 'resultado': '219,0 pg/mL', 'pessoa_id': 1, 'pessoa': {'id': 1, 'nome': 'João da Silva', 'email': 'josilva@gmail.com', 'telefone': '47 99012 3232'}}
-
-    # vamos criar um respirador que está disponível
-    r1 = Respirador(codigo="001A", data_aquisicao="24/03/2020")
-    db.session.add(r1)
-    db.session.commit()
-    print(f"Respirador 1: {r1}")
-    print(f"Respirador 1 (em json): {r1.json()}")
-    # resultado:
-    # Respirador 1: Respirador 001A adquirido em 24/03/2020
-    # Respirador 1 (em json): {'id': 1, 'codigo': '001A', 'data_aquisicao': '24/03/2020', 'pessoa_id': '', 'pessoa': '', 'data_emprestimo': ''}
-
-    # agora, um respirador emprestado para João
-    r2 = Respirador(codigo="002B", data_aquisicao="01/02/2020", pessoa = p1, data_emprestimo="04/02/2020")
-    db.session.add(r2)
-    db.session.commit()
-    print(f"Respirador 2: {r2}")
-    print(f"Respirador 2 (em json): {r2.json()}")
-    # resultado:
-    # Respirador 2: Respirador 002B adquirido em 01/02/2020, emprestado para João da Silva[id=1], josilva@gmail.com, 47 99012 3232 desde 01/02/2020
-    # Respirador 2 (em json): {'id': 2, 'codigo': '002B', 'data_aquisicao': '01/02/2020', 'pessoa_id': 1, 'pessoa': {'id': 1, 'nome': 'João da Silva', 'email': 'josilva@gmail.com', 'telefone': '47 99012 3232'}, 'data_emprestimo': '04/02/2020'}
-    # CONTEUDO JSON formatado no site: https://jsonformatter.curiousconcept.com/#
-    '''
+    ''' resultado:
+    Exame realizado: 02/02/2020, 219,0 pg/mL, João da Silva[id=1], josilva@gmail.com, 47 99012 3232, B12 [1], unidade=pg/mL (239 a 931)
+    Exame realizado em json: {'id': 1, 'data': '02/02/2020', 'resultado': '219,0 pg/mL', 'pessoa_id': 1, 'pessoa': {'id': 1, 'nome': 'João da Silva', 'email': 'josilva@gmail.com', 'telefone': '47 99012 3232'}, 'exame_id': 1, 'exame': {'id': 1, 'nome': 'B12', 'unidade': 'pg/mL', 'vr': '239 a 931'}}
+    RESULTADO JSON FORMATADO (no site https://jsonformatter.curiousconcept.com/):
     {
-      "id":2,
-      "codigo":"002B",
-      "data_aquisicao":"01/02/2020",
+      "id":1,
+      "data":"02/02/2020",
+      "resultado":"219,0 pg/mL",
       "pessoa_id":1,
       "pessoa":{
         "id":1,
@@ -146,6 +144,12 @@ if __name__ == "__main__":
         "email":"josilva@gmail.com",
         "telefone":"47 99012 3232"
       },
-      "data_emprestimo":"04/02/2020"
+      "exame_id":1,
+      "exame":{
+        "id":1,
+        "nome":"B12",
+        "unidade":"pg/mL",
+        "vr":"239 a 931"
+      }
     }
     '''
