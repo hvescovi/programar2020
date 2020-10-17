@@ -49,7 +49,7 @@ class ExameRealizado(db.Model):
 
     def __str__(self): # expressão da classe em forma de texto
         return f"{self.data}, {self.resultado}, " + \
-            f"{str(self.pessoa)}, {str(self.exame)}"
+            f"{self.pessoa}, {self.exame}"
 
     def json(self):
         return {
@@ -118,7 +118,8 @@ if __name__ == "__main__":
     
     # criar exames
     b12 = Exame(nome="B12", unidade="pg/mL", vr="239 a 931")
-    colesterol = Exame(nome="Colesterol total", unidade="mg/dL", vr="menor que 150")
+    colesterol = Exame(nome="Colesterol total", unidade="mg/dL", 
+        vr="menor que 150")
 
     # criar resultado de exame
     e1 = ExameRealizado(data="02/02/2020", exame=b12, 
