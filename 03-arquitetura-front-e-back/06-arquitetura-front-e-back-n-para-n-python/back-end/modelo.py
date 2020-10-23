@@ -152,3 +152,10 @@ if __name__ == "__main__":
       }
     }
     '''
+    # adicionando alguns respiradores...
+    r1 = Respirador(codigo="001A", data_aquisicao="24/03/2020")
+    db.session.add(r1)
+    db.session.commit()
+    r2 = Respirador(codigo="002B", data_aquisicao="01/02/2020", pessoa = p1, data_emprestimo="04/02/2020")
+    db.session.add(r2)
+    db.session.commit()
