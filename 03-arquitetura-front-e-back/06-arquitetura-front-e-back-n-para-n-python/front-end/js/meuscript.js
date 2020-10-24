@@ -36,11 +36,11 @@ $(function() { // quando o documento estiver pronto/carregado
     // função que mostra um conteúdo e esconde os outros
     function mostrar_conteudo(identificador) {
         // esconde todos os conteúdos
-        $("#cadastroPessoas").addClass('invisible');
-        $("#conteudoInicial").addClass('invisible');
-        $("#cadastroExamesRealizados").addClass('invisible');
+        $("#cadastroPessoas").addClass('d-none');
+        $("#conteudoInicial").addClass('d-none');
+        $("#cadastroExamesRealizados").addClass('d-none');
         // torna o conteúdo escolhido visível
-        $("#"+identificador).removeClass('invisible');      
+        $("#"+identificador).removeClass('d-none');      
     }
 
     // código para mapear o click do link Listar
@@ -93,7 +93,7 @@ $(function() { // quando o documento estiver pronto/carregado
     // código a ser executado quando a janela de inclusão de pessoas for fechada
     $('#modalIncluirPessoa').on('hide.bs.modal', function (e) {
         // se a página de listagem não estiver invisível
-        if (! $("#cadastroPessoas").hasClass('invisible')) {
+        if (! $("#cadastroPessoas").hasClass('d-none')) {
             // atualizar a página de listagem
             exibir_pessoas();
         }
