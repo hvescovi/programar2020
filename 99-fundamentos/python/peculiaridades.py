@@ -149,7 +149,7 @@ def incluir_perfil(elemento, conjunto=[]): # o parâmetro conjunto é opcional
 comeco = ['tem alguem']
 print(incluir_perfil('lobo', comeco)) # ['tem alguem', 'lobo']
 print(incluir_perfil('tubarao')) # ['tubarao']
-print(incluir_perfil('aguia')) # ['tubarao', 'aguia']
+print(incluir_perfil('aguia')) # ['tubarao', 'aguia'] ==> AMAZING 2
 print(incluir_perfil('gato')) # ['tubarao', 'aguia', 'gato']
 
 # o valor padrão do parâmetro é avaliado em tempo de definição,
