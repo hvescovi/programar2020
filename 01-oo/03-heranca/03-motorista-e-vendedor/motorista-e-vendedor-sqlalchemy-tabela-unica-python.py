@@ -17,10 +17,8 @@ class Pessoa(db.Model):
     nome = db.Column(db.String(254))
     telefone = db.Column(db.String(254))
     email = db.Column(db.String(254))
-
     # atributo necessário para armazenar tipo de classe especializada (discriminador)
     type = db.Column(db.String(50))
-    
     # definições de mapeamento da classe mãe
     __mapper_args__ = {
         'polymorphic_identity':'pessoa', 
@@ -30,9 +28,8 @@ class Pessoa(db.Model):
         return f'{self.nome}, {self.telefone}, {self.email}'
 
 class Vendedor(Pessoa):
-    # estabelecer vínculo com a tabela-pai. Este campo define
-    # a criação da tabela vendedor
-    id = db.Column(db.Integer, db.ForeignKey('pessoa.id'), primary_key=True)
+    # estabelecer vínculo com a tabela-pai
+    #id = db.Column(db.Integer, db.ForeignKey('pessoa.id'), primary_key=True)
 
     # a identidade polimórfica da classe será armazenada 
     # no campo type da classe pai
@@ -44,7 +41,7 @@ class Vendedor(Pessoa):
         return super().__str__() + f", comissão={self.comissao}"
 
 class Motorista(Pessoa):
-    id = db.Column(db.Integer, db.ForeignKey('pessoa.id'), primary_key=True)
+    #id = db.Column(db.Integer, db.ForeignKey('pessoa.id'), primary_key=True)
     __mapper_args__ = { 
         'polymorphic_identity':'motorista',
     }
