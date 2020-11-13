@@ -53,9 +53,8 @@ class Motorista(Pessoa):
         return f'{super().__str__()}, CNH: {self.cnh}'
 
 # início do programa de testes
-
-if os.path.exists(arquivobd):
-    os.remove(arquivobd)
+if os.path.exists(arquivobd): # se o arquivo já existe...
+    os.remove(arquivobd) # ... o arquivo é removido
 
 db.create_all() # criar as tabelas no banco
 

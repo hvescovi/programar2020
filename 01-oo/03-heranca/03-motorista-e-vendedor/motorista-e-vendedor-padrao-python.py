@@ -1,6 +1,7 @@
 class Pessoa:
     def __init__(self, nome="", fone="", email=""):
-        self.nome = nome; self.telefone = fone; self.email = email
+        self.nome = nome
+        self.telefone = fone; self.email = email
     def __str__(self):
         return f'{self.nome}, {self.telefone}, {self.email}'
 
@@ -13,9 +14,9 @@ class Vendedor(Pessoa):
 
 class Motorista(Pessoa):
     def __init__(self, cnh="", **kwargs):
-        self.cnh = cnh
         super().__init__(kwargs.get('nome'), 
             kwargs.get('fone'), kwargs.get('email'))
+        self.cnh = cnh            
     def __str__(self):
         return f'{super().__str__()}, CNH: {self.cnh}'
 
@@ -25,3 +26,7 @@ print(joao)
 maria = Motorista(cnh="123-4", 
             nome="Maria Oliveira", email="mari@gmail.com")
 print(maria)
+'''
+João da Silva, , josilva@gmail.com, comissão=10
+Maria Oliveira, None, mari@gmail.com, CNH: 123-4 
+'''
