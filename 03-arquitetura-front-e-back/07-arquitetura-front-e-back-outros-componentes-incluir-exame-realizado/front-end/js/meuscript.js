@@ -223,5 +223,44 @@ $(function() { // quando o documento estiver pronto/carregado
         
         //alert("foi");
     })
+
+     // incluir exame realizado
+     $(document).on("click", "#btIncluirExameRealizado", function() {
+        //pegar dados da tela
+        data = $("#campoData").val();
+        resultado = $("#campoResultado").val();
+        pessoa_id = $("#campoPessoaId").val();
+        exame_id = $("#campoExameId").val();
+        // preparar dados no formato json
+        var dados = JSON.stringify({ data: data, resultado: resultado, pessoa_id: pessoa_id, exame_id: exame_id });
+        // fazer requisição para o back-end
+        $.ajax({
+            url: 'http://localhost:5000/incluir_exame_realizado',
+            type: 'POST',
+            dataType: 'json', // os dados são recebidos no formato json
+            contentType: 'application/json', // tipo dos dados enviados
+            data: dados, // estes são os dados enviados
+            success: dadosIncluidos, // chama a função listar para processar o resultado
+            error: erroAoIncluir
+        });
+        function dadosIncluidos (retorno) {
+            if (retorno.resultado == "ok") { // a operação deu certo?
+                // informar resultado de sucesso
+                alert("Dados incluídos com sucesso!");
+                // limpar os campos
+                $("#campoData").val("");
+                $("#campoResultado").val("");
+                $("#campoPessoaId").val("");
+                $("#campoExameId").val("");
+            } else {
+                // informar mensagem de erro
+                alert(retorno.resultado + ":" + retorno.detalhes);
+            }            
+        }
+        function erroAoIncluir (retorno) {
+            // informar mensagem de erro
+            alert("erro ao incluir dados, verifique o backend: ");
+        }
+    });
     
 });
