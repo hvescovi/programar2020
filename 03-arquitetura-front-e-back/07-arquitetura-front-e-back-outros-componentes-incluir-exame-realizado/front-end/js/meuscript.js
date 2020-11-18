@@ -201,18 +201,14 @@ $(function() { // quando o documento estiver pronto/carregado
             // percorrer a lista de dados
             for (var i in dados) { //i vale a posição no vetor
                 $('#'+combo_id).append(
-                    $('<option></option>').attr("value", dados[i].id).text(dados[i].nome));
-                //lin = '<option value="'+dados[i].id+'">' +
-                //  dados[i].nome + '</option>';                
-                // adiciona a opção na combo
-                //$('#'+combo_id).append(lin);
+                    $('<option></option>').attr("value", 
+                        dados[i].id).text(dados[i].nome));
             }
             // espera um pouco pra ver o ícone carregando
             setTimeout(() => { 
                 $('#loading_'+combo_id).addClass('d-none');
-             }, 2000);
-            // carregou :-)
-            
+             }, 1000);
+            // carregou :-)            
         }
     }
 
@@ -220,8 +216,6 @@ $(function() { // quando o documento estiver pronto/carregado
         // carregar as listas de pessoas e exames
         carregarCombo("campoPessoaId", "Pessoa");
         carregarCombo("campoExameId", "Exame");
-        
-        //alert("foi");
     })
 
      // incluir exame realizado

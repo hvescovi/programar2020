@@ -150,9 +150,9 @@ def incluir_exame_realizado():
     # preparar uma resposta otimista
     resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
     # receber as informações
-    dados = request.get_json() #(force=True) dispensa Content-Type na requisição
+    dados = request.get_json()
     try: # tentar executar a operação
-      nova = ExameRealizado(**dados) # criar a nova pessoa
+      nova = ExameRealizado(**dados) # criar o novo exame realizado
       db.session.add(nova) # adicionar no BD
       db.session.commit() # efetivar a operação de gravação
     except Exception as e: # em caso de erro...

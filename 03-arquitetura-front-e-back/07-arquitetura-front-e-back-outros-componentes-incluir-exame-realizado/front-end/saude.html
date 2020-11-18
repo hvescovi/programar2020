@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Cadastro de pessoas</title>
+    <title>Sistema de Saúde</title>
 </head>
 
 <body>
@@ -157,9 +157,6 @@
                 </table>
             </div>
 
-
-
-
             <!-- janela modal de inclusão de exame realizado -->
             <div class="modal fade" id="modalIncluirExameRealizado" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,20 +172,20 @@
                             <form>
                                 <div class="form-group">
                                     <label for="campoPessoaId">Pessoa</label>
-                                    <select class="form-control" id="campoPessoaId"
-                                    aria-describedby="pessoaIdHelp" placeholder="PessoaId">
-                                        <option value="0">nome</option>
-                                      </select> 
-                                      <img id="loading_campoPessoaId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando pessoas">                                   
+                                    <select class="form-control" id="campoPessoaId" 
+                                      aria-describedby="pessoaIdHelp" placeholder="PessoaId">
+                                    <!-- opções serão preenchidas via javscript -->
+                                    </select> 
+                                    <img id="loading_campoPessoaId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando pessoas">                                   
                                     <small id="pessoaIdHelp" class="form-text text-muted">Selecione a pessoa que fez o exame.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="campoExameId">Exame</label>
                                     <select class="form-control" id="campoExameId"
                                     aria-describedby="exameIdHelp" placeholder="ExameId">
-                                        <option value="0">vit</option>
-                                      </select>                                    
-                                      <img id="loading_campoExameId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando exames">                                   
+                                    <!-- opções serão preenchidas via javscript -->
+                                    </select>                                    
+                                    <img id="loading_campoExameId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando exames">                                   
                                     <small id="exameIdHelp" class="form-text text-muted">Selecione o exame cujo resultado será informado.</small>
                                 </div>
                                 <div class="form-group">
