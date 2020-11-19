@@ -204,11 +204,10 @@ $(function() { // quando o documento estiver pronto/carregado
                     $('<option></option>').attr("value", 
                         dados[i].id).text(dados[i].nome));
             }
-            // espera um pouco pra ver o ícone carregando
+            // espera um pouco, para ver o ícone "carregando"
             setTimeout(() => { 
                 $('#loading_'+combo_id).addClass('d-none');
              }, 1000);
-            // carregou :-)            
         }
     }
 
