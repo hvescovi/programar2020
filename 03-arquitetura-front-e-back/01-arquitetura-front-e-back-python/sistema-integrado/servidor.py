@@ -11,6 +11,6 @@ def listar_pessoas():
     # obter as pessoas do cadastro
     pessoas = db.session.query(Pessoa).all()
     # fornecer a lista de pessoas para a página que exibe as pessoas
-    return render_template("listar_pessoas.html", listagem = pessoas)
+    return render_template("listar-pessoas.html", listagem = pessoas)
 
 app.run(debug=True)
