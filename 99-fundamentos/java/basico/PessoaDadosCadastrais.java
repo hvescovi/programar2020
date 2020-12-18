@@ -1,6 +1,6 @@
-package basico;
+//package basico;
 
-class Pessoa_DadosCadastrais {
+public class PessoaDadosCadastrais {
 
     public static void main(String args[]) {
         String nome = "Maria Teresa da Silva";

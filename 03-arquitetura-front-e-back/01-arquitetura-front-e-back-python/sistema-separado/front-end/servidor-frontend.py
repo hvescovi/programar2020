@@ -22,6 +22,6 @@ def listar_pessoas():
         pessoas_em_python.append(pe)
     
     # fornecer a lista de pessoas para a página exibir as pessoas
-    return render_template("listar_pessoas.html", listagem = pessoas_em_python)
+    return render_template("listar-pessoas.html", listagem = pessoas_em_python)
 
 app.run(debug=True, port=4999)

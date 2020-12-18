@@ -1,4 +1,4 @@
-import gi
+import gi, os
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
@@ -14,7 +14,9 @@ handlers = {
     "btn_ok_click": acao_btn_ok_click
 }
 
-builder.add_from_file("/home/friend/01-github/programar2020/04-janelas-graficas/02-janela-basica-construtor-visual/janela-basica-construtor-visual-python-glade/janela_basica.glade")
+caminho = os.path.dirname(os.path.abspath(__file__))
+arquivo = os.path.join(caminho, 'janela-basica.glade')
+builder.add_from_file(arquivo)
 builder.connect_signals(handlers)
 window = builder.get_object("window1") # referência da janela
 window.show_all()
