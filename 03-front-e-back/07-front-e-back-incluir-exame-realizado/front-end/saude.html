@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Sistema de Saúde</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+
+            <img src="img/pessoas.jpeg" height="60px" class="navbar-brand rounded-circle">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <span class="navbar-text">Sistema de saúde</span>
+
+                    <a class="nav-item nav-link" href="#" id="linkInicio">Início
+                        <span class="sr-only">(current)</span></a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" 
+                        id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                        aria-haspopup="true" aria-expanded="false">
+                          Cadastros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="#" id="linkListarPessoas">Pessoas</a>
+                          <a class="dropdown-item" href="#">Exames</a> 
+                          <a class="dropdown-item" href="#">Respiradores</a>
+                        </div>
+                    </li>
+
+                    <a class="nav-item nav-link" href="#" id="linkListarExamesRealizados">Exames realizados</a>
+                    
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </nav>
+
+        <div id="corpoDaPagina">
+
+            <div id="conteudoInicial">
+                Bem vindo ao cadastro de pessoas.
+            </div>
+
+            <!-- janela modal de inclusão de pessoa -->
+            <div class="modal fade" id="modalIncluirPessoa" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir pessoa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoNome">Nome</label>
+                                    <input type="text" class="form-control" id="campoNome"
+                                        aria-describedby="nomeHelp" placeholder="Nome">
+                                    <small id="nomeHelp" class="form-text text-muted">Informe o seu nome completo, sem
+                                        abreviações.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoEmail">Email</label>
+                                    <input type="text" class="form-control" id="campoEmail"
+                                        aria-describedby="emailHelp" placeholder="Email">
+                                    <small id="emailHelp" class="form-text text-muted">Seu email será 
+                                        utilizado apenas para contato em nosso sistema.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoTelefone">Telefone</label>
+                                    <input type="text" class="form-control" id="campoTelefone"
+                                        aria-describedby="telefoneHelp" placeholder="Telefone">
+                                    <small id="telefoneHelp" class="form-text text-muted">Informe com DDD.</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirPessoa" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="cadastroPessoas">
+                <h5>Cadastro de Pessoas</h5>
+
+                <!-- link que abre formulário de inclusão de pessoas -->
+                <a class="nav-item nav-link" data-toggle="modal" 
+                data-target="#modalIncluirPessoa" href="#"><img src="img/incluir.png" title="Incluir pessoa"></a>
+                
+                <!-- tabela de listagem de pessoas -->
+                <table class="table table-striped table-hover" id="tabelaPessoas">
+                    <thead>
+                        <!-- primeira linha da tabela: títulos -->
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Operações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaPessoas">
+                        <!-- aqui serão exibidas as pessoas -->
+                    </tbody>
+                </table>
+            </div>
+            
+            
+
+            <div class="container" id="cadastroExamesRealizados">
+                <h5>Exames Realizados</h5>
+
+                <!-- link que abre formulário de inclusão de exames -->
+                <a class="nav-item nav-link" data-toggle="modal" 
+                data-target="#modalIncluirExameRealizado" href="#">
+                  <img src="img/incluir.png" title="Incluir pessoa"></a>
+                
+                <!-- tabela de listagem de exames realizados -->
+                <table class="table table-striped table-hover" id="tabelaExamesRealizados">
+                    <thead>
+                        <!-- primeira linha da tabela: títulos -->
+                        <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Resultado</th>
+                            <!-- campos da pessoa -->
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefone</th>
+                            <!-- campos do exame -->
+                            <th scope="col">Nome</th>
+                            <th scope="col">Unidade</th>
+                            <th scope="col">Valor de referência</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaExamesRealizados">
+                        <!-- aqui serão exibidos os exames realizados -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- janela modal de inclusão de exame realizado -->
+            <div class="modal fade" id="modalIncluirExameRealizado" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir exame realizado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoPessoaId">Pessoa</label>
+                                    <select class="form-control" id="campoPessoaId" 
+                                      aria-describedby="pessoaIdHelp" placeholder="PessoaId">
+                                    <!-- opções serão preenchidas via javascript -->
+                                    </select> 
+                                    <img id="loading_campoPessoaId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando pessoas">                                   
+                                    <small id="pessoaIdHelp" class="form-text text-muted">Selecione a pessoa que fez o exame.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoExameId">Exame</label>
+                                    <select class="form-control" id="campoExameId"
+                                    aria-describedby="exameIdHelp" placeholder="ExameId">
+                                    <!-- opções serão preenchidas via javscript -->
+                                    </select>                                    
+                                    <img id="loading_campoExameId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando exames">                                   
+                                    <small id="exameIdHelp" class="form-text text-muted">Selecione o exame cujo resultado será informado.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoData">Data</label>
+                                    <input type="date" class="form-control" id="campoData"
+                                        aria-describedby="dataHelp" placeholder="Data">
+                                    <small id="dataHelp" class="form-text text-muted">Em qual data foi realizado o exame?</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoResultado">Resultado</label>
+                                    <input type="text" class="form-control" id="campoResultado"
+                                        aria-describedby="resultadoHelp" placeholder="Resultado">
+                                    <small id="resultadoHelp" class="form-text text-muted">Informe o valor do resultado.</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirExameRealizado" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div> <!-- fim da div corpo da página -->
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- código específico do front-end -->
+    <script src="js/meuscript.js"></script>
+</body>
+
+</html>

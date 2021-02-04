@@ -31,7 +31,7 @@ public class TestarDAO {
         p.registrarPosseLivro(li2);
         dao.adicionarPessoa(p);
                 
-        p = new Pessoa("Tiago", "Av. Redentor", "não tem telefone");
+        p = new Pessoa("Tiago", "Av. Redentor", "sem tel");
         p.registrarPosseLivro(li1); // essa pessoa também tem um exemplar de l1
         p.registrarPosseLivro(li3);
         dao.adicionarPessoa(p);
@@ -47,11 +47,11 @@ public class TestarDAO {
         System.out.println("* alterando endereço de p3: ");
         p.setEndereco("Minha casa nova");
         dao.atualizarPessoa(p);
-        System.out.println("novos dados: "+p);
+        System.out.println("novos dados: \n"+p);
                 
         // teste de busca
         p = dao.retornarPessoa(2);
-        System.out.println("* buscando pessoa 2: " + p);
+        System.out.println("* buscando pessoa 2: \n" + p);
         
         // excluir pessoa
         dao.removerPessoa(p);
