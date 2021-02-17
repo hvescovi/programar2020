@@ -1,0 +1,23 @@
+* mostrar a pessoa em forma de dicionário
+{'telefone': '47 9 9233 1234', 'nome': 'Joao da Silva', 'email': 'josilva@gmail.com'}
+* percorrer e exibir dados do dicionário
+telefone
+nome
+email
+* mostrando só o email e o telefone da pessoa (aspas duplas ou simples)
+josilva@gmail.com 47 9 9233 1234
+* impressão de dados em formato de dicionário
+{'nome': 'Maria Oliveira', 'email': 'maolv@gmail.com'}
+* adequando o dicionário para que seu conteúdo fique 100% json
+{"nome": "Maria Oliveira", "email": "maolv@gmail.com"}
+* usando a função que mostra tudo: mostrando nomes e valores
+mostrando tudo...
+nome é igual a Paulo Tarso
+cor_da_escova_de_dentes é igual a azul
+* passando dic pra mostra_tudo, desempacotar dic com dois asteriscos
+mostrando tudo...
+nome é igual a Joao da Silva
+email é igual a josilva@gmail.com
+telefone é igual a 47 9 9233 1234
+Tiago, tibah@gmail.com, 92231-1232
+Joao da Silva, josilva@gmail.com, 47 9 9233 1234
