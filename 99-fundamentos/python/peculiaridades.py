@@ -1,6 +1,6 @@
 # --------------------------------------------------------------------------------
 # PECULIAR 00: python é interpretado, mas exibe verificação em tempo de compilação
-# CORRIGIR ERRO deste PROGRAMA!
+# CORRIGIR ERRO deste PROGRAMA linha 217!
 # --------------------------------------------------------------------------------
 
 # ---------------------------------------
@@ -214,7 +214,7 @@ except:
 
 mundo = "belo"
 def mostrar_mundo():
-    #global mundo # DESCOMENTAR ESSA LINHA PARA RESOLVER O ERRO NESTE PROGRAMA
+    global mundo # DESCOMENTAR ESSA LINHA PARA RESOLVER O ERRO NESTE PROGRAMA
     print(mundo) # mostra: belo
     mundo = "grande" # muda o mundo 
     print(mundo) # mostra: grande
@@ -301,8 +301,8 @@ while i < 20:
     info = "" # informações a serem mostradas
 
     if i == 8:
-        info +=" este é o 8, especial]"
-        continue # vai para o fim do laço
+        print(" ESTE É O NÚMERO 8, INCRÍVEL")
+        continue # vai para o fim do laço; não executa o if abaixo
         
     if i % 17 == 0: # interrompe o laço se for divisível por 17
         print(" FIM")
@@ -335,15 +335,17 @@ print(" ".join(frase)) # insere um espaço entre cada caracter da frase
 # formatação de strings
 # https://www.python-course.eu/python3_formatted_output.php
 # 
-s = "Pedro tem {0:.2f} metros de altura".format(1.7321)
+s = "* formato: Pedro tem {0:.2f} metros de altura".format(1.7321)
 print(s)
 
 cpf = 123456789 # cpf como número :-/
-s = "Mariana tem CPF {cpf:011d} e tirou {nota:2.1f} em inglês".format(cpf=cpf,nota=7.12)
+s = "* formato: Mariana tem CPF {cpf:011d} e tirou {nota:2.1f} em inglês".format(cpf=cpf,nota=7.12)
+print(s)
 p = str(cpf) # converte para string
+print("* CPF:", cpf)
 y = p[-11:-8],p[-8:-5],p[-5:-2] # converte para tupla; resultado: ('1', '234', '567')
 x = ".".join(y) + "-" + p[-2:] # insere "." antes de cada elemento de y, depois concatena
-print(x) # 1.234.567-89
+print("* formato: " + x) # 1.234.567-89
 
 
 #
