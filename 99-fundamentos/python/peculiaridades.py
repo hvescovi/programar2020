@@ -157,8 +157,14 @@ print(incluir_perfil('gato')) # ['tubarao', 'aguia', 'gato']
 # desde a primeira vez que a função é utilizada
 # além disso, o parâmetro é MUTÁVEL!
 
-# o mesmo não ocorre para tuplas (imutáveis), já que é preciso
-# criar outras referências (conversões)
+# como acessar esse parâmetro reutilizado?
+print("acessando o parâmetro reutilizado por meio de atribuição")
+me_da_o_parametro = incluir_perfil('ovelha')
+print(me_da_o_parametro)
+
+    
+# esse fenômeno de reaproveitamento não ocorre para tuplas (imutáveis), 
+# já que é preciso criar outras referências para fazer as conversões
 def incluir_animal(elemento, conjunto=()):
     l = list(conjunto)
     l.append(elemento)
@@ -204,22 +210,22 @@ except:
     print("ERRO!")
 
 # => python interpreta declaração por declaração, e não linha por linha
-# usar global é uma saída, mas não é uma boa ideia
+# usar global é uma saída, mas não é uma boa prática
 
 mundo = "belo"
 def mostrar_mundo():
-    print(mundo) # mostra o mundo
-    global mundo
-    mundo = "grande" # munda o mundo 
-    #print(mundo) # mostra o mundo
-mostrar_mundo() # belo
-mostrar_mundo() # grande
+    #global mundo # DESCOMENTAR ESSA LINHA PARA RESOLVER O ERRO NESTE PROGRAMA
+    print(mundo) # mostra: belo
+    mundo = "grande" # muda o mundo 
+    print(mundo) # mostra: grande
+print("* uso do global")    
+mostrar_mundo() 
 
 
 
 
 # --------------------
-# OUTROS PECULIARES...
+# OUTROS PECULIARIDADES...
 # --------------------
 
 # https://py.checkio.org/blog/10-common-beginner-mistakes-in-python/
@@ -249,6 +255,13 @@ print("Nome:",nome) # mostra 'Nome: Pedro'; a vírgula insere um espaço!
 print("Nome:"+nome) # mostra: 'Nome:Pedro'
 # sep e end valem, por padrão: ' ' (espaço) e '\n', respectivamente
 print("que", "mensagem", "legal", sep=" :-) ", end='\n\n\nFIM\n')
+# saída: 
+'''
+que :-) mensagem :-) legal
+
+
+FIM
+'''
 
 #
 # for percorrendo lista com posições numéricas e por elemento
@@ -275,6 +288,7 @@ for i in range(5):
 print(list(range(0, 5))) # [0, 1, 2, 3, 4]
 
 # faixa com passo negativo
+# range(inicial, final, passo)
 print(list(range(10, 1, -2))) # [10, 8, 6, 4, 2]
 
 #
@@ -285,12 +299,14 @@ while i < 20:
     i+=1 # (i = i + 1) python não suporta i++ ou ++i
     print("\nanalisando:",i, end='') # imprime sem EOF
     info = "" # informações a serem mostradas
-    if i % 17 == 0: # interrompe se for divisível por 13
+
+    if i == 8:
+        info +=" este é o 8, especial]"
+        continue # vai para o fim do laço
+        
+    if i % 17 == 0: # interrompe o laço se for divisível por 17
         print(" FIM")
         break
-    elif i == 7: # é o 7? especial!
-        print(" !!! ESPECIAL: é o 7!!!", end='') # mostra pois vai pular o fim do laço
-        continue
     elif i % 2 == 0: # é divisível por 2?
         info += " [é par!]"
     else:
