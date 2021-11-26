@@ -17,6 +17,21 @@ joao = Pessoa()
 joao.nome = "João da Silva"
 print(type(joao)) # <class '__main__.Pessoa'>
 
+# criando pessoa
+teresa = Pessoa()
+# deixa o nome em branco...
+
+# alterando a variável de classe
+Pessoa.nome = "Marieta"
+
+#criando mais pessoas
+paulo = Pessoa()
+print(paulo.nome) # Marieta, pois o nome padrão agora é Marieta
+print(teresa.nome) # Marieta, pois o nome padrão de teresa não foi alterado,
+# e o nome padrão (atributo da classe) foi alterado
+
+
+# atributo de instância
 class Carro:
     def __init__(self, marca = '', a = ''):
         self.marca =  marca # variável/atributo de instância (dentro do __init__)
@@ -26,6 +41,12 @@ palio = Carro(marca = 'Fiat', a = '2012')
 print(fox.marca)
 print(palio.ano)
 
+Carro.marca = "FORD"  # esse comando não funciona, pois marca não é atributo de classe
+print(fox.marca) # permanece Volkwagem, pois é atributo da instância
+kombi = Carro()
+print(kombi.marca) # é vazio, pois é o valor inicial do atributo de instância dentro do construtor
+
+exit()
 
 # ---------------------------------------------
 # PECULIAR 02: variáveis de classe com herança!
