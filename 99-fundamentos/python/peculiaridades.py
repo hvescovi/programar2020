@@ -1,6 +1,6 @@
 # --------------------------------------------------------------------------------
 # PECULIAR 00: python é interpretado, mas exibe verificação em tempo de compilação
-# CORRIGIR ERRO deste PROGRAMA linha 217!
+# CORRIGIR ERRO deste PROGRAMA linha 238
 # --------------------------------------------------------------------------------
 
 # ---------------------------------------
@@ -235,7 +235,7 @@ except:
 
 mundo = "belo"
 def mostrar_mundo():
-    global mundo # DESCOMENTAR ESSA LINHA PARA RESOLVER O ERRO NESTE PROGRAMA
+    #global mundo # DESCOMENTAR ESSA LINHA PARA RESOLVER O ERRO NESTE PROGRAMA
     print(mundo) # mostra: belo
     mundo = "grande" # muda o mundo 
     print(mundo) # mostra: grande
